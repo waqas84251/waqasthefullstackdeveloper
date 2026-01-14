@@ -1,0 +1,73 @@
+/* ===================================
+   FIX: HERO GAP & MISSING ICONS
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* 1. Remove Huge White Space in Hero */
+    .hero {
+        padding-top: 90px !important;
+        /* Reduced from potential large value */
+        min-height: auto !important;
+        height: auto !important;
+        padding-bottom: 40px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+    }
+
+    /* 2. Fix Container Alignment */
+    .hero .container {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    /* 3. Bring Content Up */
+    .hero-content {
+        gap: 1rem !important;
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+
+    /* 4. Fix Missing Social Icons */
+    .social-sidebar {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+        position: relative !important;
+        /* Not fixed, flow with content */
+        width: 100% !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin-top: 1.5rem !important;
+        background: rgba(0, 0, 0, 0.05) !important;
+        /* Light bg to ensure visibility */
+        padding: 10px !important;
+        border-radius: 50px !important;
+        gap: 15px !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        top: auto !important;
+        transform: none !important;
+        z-index: 100;
+    }
+
+    /* Ensure Icons themselves are visible */
+    .social-sidebar a {
+        width: 40px !important;
+        height: 40px !important;
+        background: #2563eb !important;
+        /* Blue background to be 100% visible */
+        color: white !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 5px !important;
+        font-size: 1.2rem !important;
+    }
+
+}
