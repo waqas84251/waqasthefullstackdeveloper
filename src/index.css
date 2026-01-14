@@ -3616,3 +3616,64 @@ p {
         font-size: 0.9rem !important;
     }
 }
+/* ===================================
+   MOBILE LAYOUT FIXES (Request Solution)
+   =================================== */
+
+/* 1. Stop Horizontal Scrolling */
+html,
+body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* 2. Box Sizing for everything */
+* {
+    box-sizing: border-box;
+}
+
+/* 3. Media Query for max-width: 768px */
+@media (max-width: 768px) {
+
+    /* Main Container Width & Padding */
+    .container {
+        width: 100% !important;
+        padding: 0 20px !important;
+        margin: 0 auto;
+    }
+
+    /* Center Profile Image & Content */
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Ensure Wrapper doesn't overflow */
+    .hero-image-wrapper {
+        margin: 0 auto;
+    }
+
+    /* Images Scaling */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* Fix Footer Social Alignment */
+    .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer .social-links {
+        justify-content: center;
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+}
