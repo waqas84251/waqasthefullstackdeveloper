@@ -3824,3 +3824,157 @@ body {
         /* Topmost */
     }
 }
+/* ===================================
+   FIX: VERTICAL SIDEBAR & NO GAP
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* 1. HERO SECTION: Remove Gap completely */
+    .hero {
+        padding-top: 70px !important;
+        /* Matches Navbar height exactly */
+        padding-bottom: 2rem !important;
+        min-height: auto !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+    }
+
+    .hero .container {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    .hero-content {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        gap: 1rem !important;
+    }
+
+    /* 2. SOCIAL ICONS: Vertical on Right Side */
+    .social-sidebar {
+        position: fixed !important;
+        /* Fixed to screen */
+        right: 10px !important;
+        /* Visible, not cut off */
+        top: 50% !important;
+        /* Vertically centered */
+        transform: translateY(-50%) !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+        /* Vertical Stack */
+        gap: 12px !important;
+
+        width: auto !important;
+        margin: 0 !important;
+        padding: 8px !important;
+        background: rgba(0, 0, 0, 0.2) !important;
+        /* Semi-transparent bg */
+        border-radius: 20px !important;
+        z-index: 9990 !important;
+        /* High Z-Index but below Modal/Menu */
+        left: auto !important;
+        bottom: auto !important;
+    }
+
+    /* Style Icons */
+    .social-sidebar a {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 1.1rem !important;
+        margin: 0 !important;
+        border-radius: 50% !important;
+        background: rgba(37, 99, 235, 0.9) !important;
+        /* Visible Blue */
+        color: white !important;
+        border: 1px solid rgba(255, 255, 255, 0.3) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* 3. Adjust Crisp Chat to not overlap Social Icons */
+    .premium-contact-wrapper {
+        bottom: 15px !important;
+        right: 15px !important;
+        z-index: 9999 !important;
+    }
+}
+/* ===================================
+   FIX: EXACT ICON STYLE (White Bg + Brand Colors)
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* 1. Sidebar Container: Transparent & Clean */
+    .social-sidebar {
+        position: fixed !important;
+        right: 15px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        /* Increased gap as per screenshot */
+
+        background: transparent !important;
+        /* No dark box */
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: none !important;
+        width: auto !important;
+
+        z-index: 9995 !important;
+    }
+
+    /* 2. Icon Buttons: White Circle with Shadow */
+    .social-sidebar a {
+        width: 45px !important;
+        height: 45px !important;
+
+        background: #ffffff !important;
+        /* White Background */
+        border-radius: 50% !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        /* Subtle Shadow */
+        border: none !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 !important;
+        font-size: 1.3rem !important;
+        transition: transform 0.2s ease !important;
+    }
+
+    /* 3. Original Brand Colors for Icons */
+    .social-sidebar a .fa-linkedin {
+        color: #0077b5 !important;
+    }
+
+    .social-sidebar a .fa-x-twitter {
+        color: #000000 !important;
+    }
+
+    .social-sidebar a .fa-youtube {
+        color: #ff0000 !important;
+    }
+
+    .social-sidebar a .fa-tiktok {
+        color: #000000 !important;
+    }
+
+    .social-sidebar a .fa-facebook {
+        color: #1877f2 !important;
+    }
+
+    /* 4. Ensure Hero Gap is still gone */
+    .hero {
+        padding-top: 70px !important;
+    }
+}
