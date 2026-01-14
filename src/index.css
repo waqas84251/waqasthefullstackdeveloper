@@ -4227,3 +4227,15 @@ body {
         /* Moved up from 15px */
     }
 }
+/* ===================================
+   FIX: REFINED GAP BETWEEN RIBBON AND ICON
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* Refined position: moved down slightly (1/3rd of previous attempt) 
+       to create a perfectly balanced gap. */
+    .curved-ribbon-container {
+        transform: translateY(-5px) !important;
+    }
+}
