@@ -4239,3 +4239,14 @@ body {
         transform: translateY(-5px) !important;
     }
 }
+/* ===================================
+   FIX: REFINED RIBBON GAP (1/3rd Lowered)
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* Moving it down as per user request (1/3rd lower than previous) */
+    .curved-ribbon-container {
+        transform: translateY(-2px) !important;
+    }
+}
