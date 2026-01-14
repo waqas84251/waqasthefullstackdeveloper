@@ -3677,3 +3677,71 @@ body {
         flex-wrap: wrap;
     }
 }
+/* ===================================
+   URGENT MOBILE FIXES (User Request)
+   =================================== */
+
+/* 1. Ensure Standard Viewport Behavior */
+/* Verify <meta name="viewport" content="width=device-width, initial-scale=1.0"> in index.html */
+
+/* 2. Global Resets */
+html,
+body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+}
+
+/* 3. Media Query for Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+
+    /* Container Padding */
+    .container {
+        width: 100% !important;
+        padding: 0 20px !important;
+        overflow: hidden !important;
+    }
+
+    /* Center Profile & Text */
+    .hero-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+    }
+
+    .hero-image-wrapper {
+        margin: 0 auto 20px auto !important;
+        /* Add bottom margin */
+    }
+
+    /* RE-POSITION SOCIAL ICONS: Horizontal Row Below Text */
+    .social-sidebar {
+        position: static !important;
+        /* Remove fixed positioning */
+        transform: none !important;
+        display: flex !important;
+        flex-direction: row !important;
+        /* Horizontal Row */
+        justify-content: center !important;
+        gap: 15px !important;
+        padding: 20px 0 !important;
+        width: 100% !important;
+        background: transparent !important;
+        margin-top: 1rem !important;
+        border: none !important;
+    }
+
+    /* Force Links to be Visible & Standard Size */
+    .social-sidebar a {
+        width: 45px !important;
+        height: 45px !important;
+        font-size: 1.4rem !important;
+        /* Larger icons */
+        border-radius: 50% !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+}
