@@ -1,0 +1,28 @@
+/* ===================================
+   FIX: OPTIMAL HERO SPACING (Invisible Gap)
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* 
+     Logic: Navbar is approx 70px.
+     We set padding-top to 80px.
+     This leaves 10px of "invisible gap" which prevents touching 
+     but removes the large "white band" look.
+  */
+
+    .hero {
+        padding-top: 80px !important;
+        /* Perfect flush fit with breathing room */
+    }
+
+    .hero .container {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    /* Ensure image wrapper has no top margin contributing to gap */
+    .hero-image-wrapper {
+        margin-top: 0 !important;
+    }
+}

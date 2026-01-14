@@ -4045,3 +4045,175 @@ body {
     /* Brand Colors need to be rgba to support true transparency if needed, 
      but opacity handles the "see-through" effect on the whole element best. */
 }
+/* ===================================
+   DARK MODE ICON OPTIMIZATION (Local Only)
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* When Dark Mode is Active */
+    [data-theme="dark"] .social-sidebar a {
+        /* Make icons pop slightly more on dark bg */
+        filter: brightness(1.1);
+    }
+
+    /* Fix Black Icons on Dark Background -> Make them White */
+    [data-theme="dark"] .social-sidebar a .fa-x-twitter,
+    [data-theme="dark"] .social-sidebar a .fa-tiktok {
+        color: #ffffff !important;
+        /* White color for contrast */
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
+        /* Subtle glow */
+    }
+
+    /* Add Premium Glow on Hover for All Icons in Dark Mode */
+    [data-theme="dark"] .social-sidebar a:hover {
+        filter: brightness(1.3) drop-shadow(0 0 8px currentColor);
+        opacity: 1 !important;
+    }
+}
+/* ===================================
+   FIX: SOLID DARK ICONS (Remove Fading)
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* 1. Remove Ghost/Transparent Effect - Make them SOLID */
+    .social-sidebar a {
+        opacity: 1 !important;
+        /* Fully Visible */
+        mix-blend-mode: normal !important;
+        transform: none !important;
+        filter: none !important;
+        /* Remove any previous filters */
+    }
+
+    /* 2. Enforce PITCH BLACK for X and TikTok (as per screenshot) */
+    .social-sidebar a .fa-x-twitter {
+        color: #000000 !important;
+        font-weight: 900 !important;
+        /* Bold */
+    }
+
+    .social-sidebar a .fa-tiktok {
+        color: #000000 !important;
+        font-weight: 900 !important;
+    }
+
+    /* 3. Deep Brand Colors for others */
+    .social-sidebar a .fa-linkedin {
+        color: #0077b5 !important;
+    }
+
+    .social-sidebar a .fa-youtube {
+        color: #ff0000 !important;
+    }
+
+    .social-sidebar a .fa-facebook {
+        color: #1877f2 !important;
+    }
+
+    /* 4. Ensure Size is Bold/Clear */
+    .social-sidebar a {
+        font-size: 1.6rem !important;
+        /* Slightly larger for that "Dark/Bold" look */
+        text-shadow: none !important;
+        /* Clean flat look */
+    }
+}
+/* ===================================
+   FIX: SMALLER ICONS & NO BLUR (Clear View)
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* 1. Reduce Icon Size */
+    .social-sidebar a {
+        font-size: 1.3rem !important;
+        /* Smaller size (was 1.6rem) */
+        width: 35px !important;
+        /* Smaller touch target to match */
+        height: 35px !important;
+    }
+
+    /* 2. Remove ANY Blur or Background Obstruction */
+    .social-sidebar a {
+        backdrop-filter: none !important;
+        /* No blurring of background text */
+        -webkit-backdrop-filter: none !important;
+        background: transparent !important;
+        /* Ensure 100% transparent bg */
+        box-shadow: none !important;
+    }
+
+    /* 3. Ensure Spacing is Tighter for smaller icons */
+    .social-sidebar {
+        gap: 12px !important;
+        right: 12px !important;
+        /* Slightly closer to edge to clear text space */
+    }
+
+    /* Optional: Slight opacity to let text peek through if overlap happens */
+    .social-sidebar a {
+        opacity: 0.9 !important;
+        /* Almost solid, but not harsh */
+    }
+}
+/* ===================================
+   FIX: NAVBAR GAP & POSITION
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* 1. Ensure Navbar is compact and standard */
+    .navbar {
+        height: 70px !important;
+        /* Fixed standard height */
+        padding: 0 !important;
+        /* Remove excess padding */
+        display: flex !important;
+        align-items: center !important;
+    }
+
+    .navbar .container {
+        padding: 0 15px !important;
+        /* Horizontal padding only */
+    }
+
+    /* 2. Create "Thora Sa Gap" (Small Gap) for Hero */
+    .hero {
+        padding-top: 95px !important;
+        /* 70px Header + 25px Gap */
+        /* This pushes the image down slightly so it doesn't touch the header */
+    }
+
+    /* Ensure content respects this push */
+    .hero-content {
+        margin-top: 0 !important;
+    }
+}
+/* ===================================
+   FIX: FLUSH HERO LOOK (Matches Screenshot)
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* 1. Remove the large white gap by matching Navbar height exactly */
+    .hero {
+        padding-top: 70px !important;
+        /* Top of hero section touches bottom of navbar */
+    }
+
+    /* 2. Create the "tiny gap" for the CONTENT (Image) 
+       so it's not sticking to the navbar line, but the backgrounds are flush. */
+    .hero-content {
+        padding-top: 15px !important;
+        /* Small breathing room for the image */
+        margin-top: 0 !important;
+    }
+
+    /* Ensure container doesn't add extra padding */
+    .hero .container {
+        padding-top: 0 !important;
+    }
+}
