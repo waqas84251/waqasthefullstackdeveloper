@@ -438,19 +438,15 @@ p {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  z-index: 1000;
+  z-index: 10000;
+  /* Above Crisp to allow stacking */
   background: transparent;
-  /* Fully transparent */
   padding: 1.2rem 0.6rem;
   border-radius: 16px;
   border: none;
-  /* Removed border */
   backdrop-filter: none;
-  /* Removed blur to see content clearly */
   box-shadow: none;
-  /* Removed shadow of the container */
   transition: all var(--transition-normal);
-  z-index: 3000;
 }
 
 /* --- Clean Modern Chat Widget (Vector Style) --- */
@@ -593,18 +589,13 @@ p {
   transform: scale(0.8) translateY(20px);
 }
 
-@media (max-width: 768px) {
-  .premium-contact-wrapper {
-    right: 15px;
-    bottom: 15px;
-    transform: scale(0.8);
+/* Desktop Only: Hidden State (Collapses sidebar when menu is open) */
+@media (min-width: 769px) {
+  .social-sidebar.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) translateX(20px);
   }
-}
-
-.social-sidebar.hidden {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-50%) translateX(20px);
 }
 
 .social-sidebar a {
@@ -613,14 +604,17 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  /* Rectangular shape */
+  border-radius: 50%;
+  /* Circular for better mobile look */
   color: var(--text-secondary);
   text-decoration: none;
   font-size: 1.3rem;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background: transparent;
-  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  /* Subtle background */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  /* Glass effect */
 }
 
 /* Social Brand Colors - Sidebar */
@@ -3309,248 +3303,316 @@ p {
   .hero-text h1 {
     font-size: 1.8rem;
   }
-}/* ===================================
+}
+
+/* ===================================
    COMPREHENSIVE RESPONSIVE BREAKPOINTS
    Added: 2026-01-14 - Full Device Coverage
    =================================== */
 
 /* Extra Small Phones: 320px - 360px */
 @media (max-width: 360px) {
-    .container {
-        padding: 0 0.75rem;
-    }
+  .container {
+    padding: 0 0.75rem;
+  }
 
-    .section {
-        padding: 2.5rem 0;
-    }
+  .section {
+    padding: 2.5rem 0;
+  }
 
-    .section-title h2 {
-        font-size: 1.5rem;
-    }
+  .section-title h2 {
+    font-size: 1.5rem;
+  }
 
-    .hero-text h1 {
-        font-size: 1.6rem !important;
-    }
+  .hero-text h1 {
+    font-size: 1.6rem !important;
+  }
 
-    .hero-text .tagline {
-        font-size: 0.9rem;
-    }
+  .hero-text .tagline {
+    font-size: 0.9rem;
+  }
 
-    .btn {
-        font-size: 0.9rem;
-        padding: 0.7rem 1.2rem;
-    }
+  .btn {
+    font-size: 0.9rem;
+    padding: 0.7rem 1.2rem;
+  }
 
-    .social-sidebar a {
-        width: 32px;
-        height: 32px;
-        font-size: 0.9rem;
-    }
+  .social-sidebar a {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+  }
 
-    .premium-contact-wrapper {
-        transform: scale(0.65);
-    }
+  .social-sidebar {
+    bottom: 85px;
+    /* Closer to Crisp on small screens */
+    gap: 0.6rem;
+  }
+
+  .premium-contact-wrapper {
+    transform: scale(0.65);
+  }
 }
 
 /* Small Tablets: 600px - 768px */
 @media (min-width: 600px) and (max-width: 768px) {
-    .container {
-        padding: 0 1.5rem;
-    }
+  .container {
+    padding: 0 1.5rem;
+  }
 
-    .hero-image-wrapper {
-        width: 280px;
-        height: 280px;
-    }
+  .hero-image-wrapper {
+    width: 280px;
+    height: 280px;
+  }
 
-    .services-grid,
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
+  .services-grid,
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
 
-    .about-radial-layout {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
+  .about-radial-layout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 
-    .team-track-content {
-        gap: 1.5rem;
-    }
+  .team-track-content {
+    gap: 1.5rem;
+  }
 }
 
 /* Large Tablets: 800px - 1024px */
 @media (min-width: 800px) and (max-width: 1024px) {
-    .container {
-        max-width: 900px;
-        padding: 0 2rem;
-    }
+  .container {
+    max-width: 900px;
+    padding: 0 2rem;
+  }
 
-    .hero-content {
-        gap: 2.5rem;
-    }
+  .hero-content {
+    gap: 2.5rem;
+  }
 
-    .hero-image-wrapper {
-        width: 350px;
-        height: 350px;
-    }
+  .hero-image-wrapper {
+    width: 350px;
+    height: 350px;
+  }
 
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2rem;
-    }
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 
-    .portfolio-track-content {
-        gap: 1.5rem;
-    }
+  .portfolio-track-content {
+    gap: 1.5rem;
+  }
 
-    .about-radial-layout {
-        grid-template-columns: 1fr;
-    }
+  .about-radial-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Small Laptops: 1024px - 1280px */
 @media (min-width: 1024px) and (max-width: 1280px) {
-    .container {
-        max-width: 1000px;
-    }
+  .container {
+    max-width: 1000px;
+  }
 
-    .hero-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-    }
+  .hero-content {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
 
-    .hero-image-wrapper {
-        max-width: 400px;
-    }
+  .hero-image-wrapper {
+    max-width: 400px;
+  }
 
-    .services-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
-    .about-radial-layout {
-        grid-template-columns: 1.2fr 0.8fr 1.2fr;
-    }
+  .about-radial-layout {
+    grid-template-columns: 1.2fr 0.8fr 1.2fr;
+  }
 }
 
 /* Standard Laptops: 1366px - 1440px */
 @media (min-width: 1366px) and (max-width: 1440px) {
-    .container {
-        max-width: 1200px;
-    }
+  .container {
+    max-width: 1200px;
+  }
 
-    .hero-text h1 {
-        font-size: 3.2rem;
-    }
+  .hero-text h1 {
+    font-size: 3.2rem;
+  }
 
-    .section {
-        padding: 6rem 0;
-    }
+  .section {
+    padding: 6rem 0;
+  }
 }
 
 /* Large Screens: 1600px+ */
 @media (min-width: 1600px) {
-    .container {
-        max-width: 1400px;
-    }
+  .container {
+    max-width: 1400px;
+  }
 
-    .hero {
-        min-height: 80vh;
-    }
+  .hero {
+    min-height: 80vh;
+  }
 
-    .hero-text h1 {
-        font-size: 3.8rem;
-    }
+  .hero-text h1 {
+    font-size: 3.8rem;
+  }
 
-    .hero-text .tagline {
-        font-size: 1.4rem;
-    }
+  .hero-text .tagline {
+    font-size: 1.4rem;
+  }
 
-    .section {
-        padding: 8rem 0;
-    }
+  .section {
+    padding: 8rem 0;
+  }
 
-    .services-grid,
-    .portfolio-grid {
-        gap: 2.5rem;
-    }
+  .services-grid,
+  .portfolio-grid {
+    gap: 2.5rem;
+  }
 }
 
 /* Ultra-Wide Screens: 1920px+ */
 @media (min-width: 1920px) {
-    .container {
-        max-width: 1600px;
-    }
+  .container {
+    max-width: 1600px;
+  }
 
-    .hero-text h1 {
-        font-size: 4.2rem;
-    }
+  .hero-text h1 {
+    font-size: 4.2rem;
+  }
 
-    .section-title h2 {
-        font-size: 3.5rem;
-    }
+  .section-title h2 {
+    font-size: 3.5rem;
+  }
 
-    .card {
-        padding: 2.5rem;
-    }
+  .card {
+    padding: 2.5rem;
+  }
 }
 
 /* 4K Screens: 2560px+ */
 @media (min-width: 2560px) {
-    .container {
-        max-width: 2000px;
-    }
+  .container {
+    max-width: 2000px;
+  }
 
-    .hero {
-        min-height: 85vh;
-    }
+  .hero {
+    min-height: 85vh;
+  }
 
-    .hero-text h1 {
-        font-size: 5rem;
-    }
+  .hero-text h1 {
+    font-size: 5rem;
+  }
 
-    .section {
-        padding: 10rem 0;
-    }
+  .section {
+    padding: 10rem 0;
+  }
 }
 
 /* Landscape Orientation Fixes */
 @media (max-height: 600px) and (orientation: landscape) {
-    .hero {
-        min-height: auto;
-        padding: 80px 0 40px;
-    }
+  .hero {
+    min-height: auto;
+    padding: 80px 0 40px;
+  }
 
-    .section {
-        padding: 3rem 0;
-    }
+  .section {
+    padding: 3rem 0;
+  }
 
-    .navbar {
-        padding: 0.8rem 0;
-    }
+  .navbar {
+    padding: 0.8rem 0;
+  }
 
-    .hero-image-wrapper {
-        width: 200px;
-        height: 200px;
-    }
+  .hero-image-wrapper {
+    width: 200px;
+    height: 200px;
+  }
 }
 
 /* Print Styles */
 @media print {
 
-    .navbar,
-    .social-sidebar,
-    .premium-contact-wrapper,
-    #crisp-client {
-        display: none !important;
+  .navbar,
+  .social-sidebar,
+  .premium-contact-wrapper,
+  #crisp-client {
+    display: none !important;
+  }
+
+  .hero {
+    page-break-after: always;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}/* ===================================
+   FINAL MOBILE UI OVERRIDES (2026-01-14)
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* Social Sidebar: Always Visible & Stacked above Crisp */
+    .social-sidebar {
+        position: fixed !important;
+        right: 15px !important;
+        bottom: 100px !important;
+        /* Stacked above Crisp */
+        top: auto !important;
+        transform: none !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.8rem !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        z-index: 10000 !important;
+        background: transparent !important;
+        padding: 0.5rem !important;
+        width: auto !important;
     }
 
-    .hero {
-        page-break-after: always;
+    /* Force Links to be Visible & Styled */
+    .social-sidebar a {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 1.1rem !important;
+        border-radius: 50% !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        backdrop-filter: blur(8px) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transform: none !important;
+        margin: 0 !important;
     }
 
-    body {
-        background: white;
-        color: black;
+    /* Remove Desktop Hover Shift on Mobile */
+    .social-sidebar a:hover {
+        transform: scale(1.05) !important;
+    }
+}
+
+/* Extra Small Devices Adjustment */
+@media (max-width: 360px) {
+    .social-sidebar {
+        bottom: 90px !important;
+        right: 10px !important;
+        gap: 0.6rem !important;
+    }
+
+    .social-sidebar a {
+        width: 34px !important;
+        height: 34px !important;
+        font-size: 0.9rem !important;
     }
 }
