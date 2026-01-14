@@ -145,11 +145,12 @@ p {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  width: 100%;
 }
 
 .section {
-  padding: 6rem 0;
+  padding: clamp(3rem, 8vw, 6rem) 0;
   position: relative;
 }
 
@@ -182,8 +183,8 @@ p {
    =================================== */
 .btn {
   display: inline-block;
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
+  padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(1rem, 2vw, 1.1rem);
   font-weight: 600;
   text-decoration: none;
   border-radius: 50px;
@@ -193,6 +194,9 @@ p {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  min-height: 44px;
+  /* Touch target minimum */
+  min-width: 44px;
 }
 
 .btn-primary {
@@ -3305,4 +3309,248 @@ p {
   .hero-text h1 {
     font-size: 1.8rem;
   }
+}/* ===================================
+   COMPREHENSIVE RESPONSIVE BREAKPOINTS
+   Added: 2026-01-14 - Full Device Coverage
+   =================================== */
+
+/* Extra Small Phones: 320px - 360px */
+@media (max-width: 360px) {
+    .container {
+        padding: 0 0.75rem;
+    }
+
+    .section {
+        padding: 2.5rem 0;
+    }
+
+    .section-title h2 {
+        font-size: 1.5rem;
+    }
+
+    .hero-text h1 {
+        font-size: 1.6rem !important;
+    }
+
+    .hero-text .tagline {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+    }
+
+    .social-sidebar a {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+
+    .premium-contact-wrapper {
+        transform: scale(0.65);
+    }
+}
+
+/* Small Tablets: 600px - 768px */
+@media (min-width: 600px) and (max-width: 768px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .hero-image-wrapper {
+        width: 280px;
+        height: 280px;
+    }
+
+    .services-grid,
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .about-radial-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .team-track-content {
+        gap: 1.5rem;
+    }
+}
+
+/* Large Tablets: 800px - 1024px */
+@media (min-width: 800px) and (max-width: 1024px) {
+    .container {
+        max-width: 900px;
+        padding: 0 2rem;
+    }
+
+    .hero-content {
+        gap: 2.5rem;
+    }
+
+    .hero-image-wrapper {
+        width: 350px;
+        height: 350px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .portfolio-track-content {
+        gap: 1.5rem;
+    }
+
+    .about-radial-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Small Laptops: 1024px - 1280px */
+@media (min-width: 1024px) and (max-width: 1280px) {
+    .container {
+        max-width: 1000px;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+    }
+
+    .hero-image-wrapper {
+        max-width: 400px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .about-radial-layout {
+        grid-template-columns: 1.2fr 0.8fr 1.2fr;
+    }
+}
+
+/* Standard Laptops: 1366px - 1440px */
+@media (min-width: 1366px) and (max-width: 1440px) {
+    .container {
+        max-width: 1200px;
+    }
+
+    .hero-text h1 {
+        font-size: 3.2rem;
+    }
+
+    .section {
+        padding: 6rem 0;
+    }
+}
+
+/* Large Screens: 1600px+ */
+@media (min-width: 1600px) {
+    .container {
+        max-width: 1400px;
+    }
+
+    .hero {
+        min-height: 80vh;
+    }
+
+    .hero-text h1 {
+        font-size: 3.8rem;
+    }
+
+    .hero-text .tagline {
+        font-size: 1.4rem;
+    }
+
+    .section {
+        padding: 8rem 0;
+    }
+
+    .services-grid,
+    .portfolio-grid {
+        gap: 2.5rem;
+    }
+}
+
+/* Ultra-Wide Screens: 1920px+ */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px;
+    }
+
+    .hero-text h1 {
+        font-size: 4.2rem;
+    }
+
+    .section-title h2 {
+        font-size: 3.5rem;
+    }
+
+    .card {
+        padding: 2.5rem;
+    }
+}
+
+/* 4K Screens: 2560px+ */
+@media (min-width: 2560px) {
+    .container {
+        max-width: 2000px;
+    }
+
+    .hero {
+        min-height: 85vh;
+    }
+
+    .hero-text h1 {
+        font-size: 5rem;
+    }
+
+    .section {
+        padding: 10rem 0;
+    }
+}
+
+/* Landscape Orientation Fixes */
+@media (max-height: 600px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: 80px 0 40px;
+    }
+
+    .section {
+        padding: 3rem 0;
+    }
+
+    .navbar {
+        padding: 0.8rem 0;
+    }
+
+    .hero-image-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* Print Styles */
+@media print {
+
+    .navbar,
+    .social-sidebar,
+    .premium-contact-wrapper,
+    #crisp-client {
+        display: none !important;
+    }
+
+    .hero {
+        page-break-after: always;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
 }
