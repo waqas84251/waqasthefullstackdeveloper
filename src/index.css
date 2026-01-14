@@ -4227,48 +4227,15 @@ body {
         /* Moved up from 15px */
     }
 }
+
 /* ===================================
-   FIX: REFINED GAP BETWEEN RIBBON AND ICON
+   FIX: REDUCE RIBBON GAP BY HALF (Definitive)
    =================================== */
-
 @media (max-width: 768px) {
-
-    /* Refined position: moved down slightly (1/3rd of previous attempt) 
-       to create a perfectly balanced gap. */
     .curved-ribbon-container {
-        transform: translateY(-5px) !important;
-    }
-}
-/* ===================================
-   FIX: REFINED RIBBON GAP (1/3rd Lowered)
-   =================================== */
-
-@media (max-width: 768px) {
-
-    /* Moving it down as per user request (1/3rd lower than previous) */
-    .curved-ribbon-container {
-        transform: translateY(-2px) !important;
-    }
-}
-/* ===================================
-   FIX: FINAL RIBBON ADJUSTMENT (Flush)
-   =================================== */
-
-@media (max-width: 768px) {
-
-    /* Lowering it more as requested to make it almost flush with the icon */
-    .curved-ribbon-container {
-        transform: translateY(1px) !important;
-    }
-}
-/* ===================================
-   LOCAL FIX: PUSH RIBBON DOWN (Flush with Icon)
-   =================================== */
-
-@media (max-width: 768px) {
-
-    /* Pushing it down significantly on Localhost only */
-    .curved-ribbon-container {
-        transform: translateY(10px) !important;
+        transform: translateY(37px) !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 }
