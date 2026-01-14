@@ -3745,3 +3745,82 @@ body {
         justify-content: center !important;
     }
 }
+/* ===================================
+   FINAL MOBILE POLISH (Fixing Gap & Icons)
+   =================================== */
+
+@media (max-width: 768px) {
+
+    /* 1. Eliminate Extra Top Gap */
+    .hero {
+        padding-top: 80px !important;
+        /* Matches Navbar height exactly */
+        padding-bottom: 2rem !important;
+        min-height: auto !important;
+        height: auto !important;
+    }
+
+    .hero .container {
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+
+    .hero-content {
+        margin-top: 10px !important;
+        /* Slight breathing room, no huge gap */
+        gap: 0.5rem !important;
+    }
+
+    .hero-image-wrapper {
+        margin-top: 0 !important;
+    }
+
+    /* 2. MOVE SOCIAL ICONS BELOW TEXT (Horizontal Row) */
+    .social-sidebar {
+        position: relative !important;
+        /* No longer fixed to side */
+        top: auto !important;
+        bottom: auto !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important;
+
+        display: flex !important;
+        flex-direction: row !important;
+        /* Horizontal */
+        justify-content: center !important;
+        align-items: center !important;
+        flex-wrap: wrap !important;
+
+        width: 100% !important;
+        margin-top: 1.5rem !important;
+        /* Space below "Full Stack Developer" text */
+        padding: 10px 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        z-index: 50 !important;
+        /* Below Navbar z-index */
+    }
+
+    /* Style the icons for horizontal layout */
+    .social-sidebar a {
+        width: 42px !important;
+        height: 42px !important;
+        font-size: 1.2rem !important;
+        margin: 0 8px !important;
+        /* Horizontal spacing */
+        background: rgba(30, 30, 30, 0.8) !important;
+        /* Dark background for visibility */
+        color: white !important;
+        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        backdrop-filter: blur(4px) !important;
+        border-radius: 50% !important;
+    }
+
+    /* 3. Ensure Chat Widget doesn't overlap content */
+    .premium-contact-wrapper {
+        z-index: 9999 !important;
+        /* Topmost */
+    }
+}
