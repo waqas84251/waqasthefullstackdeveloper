@@ -4233,7 +4233,7 @@ body {
    =================================== */
 @media (max-width: 768px) {
     .curved-ribbon-container {
-        transform: translateY(37px) !important;
+        transform: translateY(43px) !important;
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
