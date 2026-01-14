@@ -4217,3 +4217,13 @@ body {
         padding-top: 0 !important;
     }
 }
+/* ===================================
+   FIX: MOVE CONTACT WIDGET HIGHER (Mobile)
+   =================================== */
+
+@media (max-width: 768px) {
+    .premium-contact-wrapper {
+        bottom: 60px !important;
+        /* Moved up from 15px */
+    }
+}
