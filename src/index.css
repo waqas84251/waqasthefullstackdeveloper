@@ -3547,113 +3547,34 @@ p {
 }
 
 /* ===================================
-   EXPERT LARGE SCREEN OPTIMIZATION (1200px - 5000px)
+   LARGE SCREEN LOCK (>1200px)
+   Keep 1200px design, just center it
    =================================== */
 
-/* 1. Large Desktop (1200px - 1600px) */
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1440px;
-  }
-}
+@media (min-width: 1201px) {
 
-/* 2. Ultra-Wide & High Density (1600px - 2500px+) */
-@media (min-width: 1601px) {
-  .container {
-    max-width: 1600px;
-    /* Locked elegant constraint */
+  /* Lock all containers at 1200px max-width */
+  .container,
+  .navbar .container,
+  .about-radial-wrapper,
+  .portfolio-carousel-wrapper,
+  .team-carousel-wrapper {
+    max-width: 1200px !important;
+    margin: 0 auto;
   }
 
-  /* Scale root typography for 4K and Ultra-wide */
-  :root {
-    font-size: 110%;
-    /* Subtle bump */
-  }
-
+  /* Ensure hero maintains 2-column layout */
   .hero-content {
-    gap: 8rem;
-    /* More breathing room */
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 4rem !important;
+    align-items: center !important;
   }
 
-  .hero-text h1 {
-    font-size: clamp(3.5rem, 4vw, 5.5rem);
-  }
-
-  .hero-text .tagline {
-    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
-    max-width: 800px;
-  }
-
-  .hero-image img {
-    height: 600px;
-    width: 600px;
-  }
-
-  .hero-image-wrapper {
-    max-width: 600px;
-  }
-}
-
-/* 3. Massive Screens & Extreme Ultra-Wide (2500px - 5000px) */
-@media (min-width: 2500px) {
-  :root {
-    font-size: 125%;
-    /* Significant scale for readability at distance */
-  }
-
-  .container {
-    max-width: 1800px;
-    /* Slightly wider but still constrained for elegance */
-  }
-
-  .hero-text h1 {
-    font-size: clamp(5rem, 5vw, 8rem);
-  }
-
-  .hero-image img {
-    height: 800px;
-    width: 800px;
-  }
-
-  .hero-image-wrapper {
-    max-width: 800px;
-  }
-
-  .section {
-    padding: clamp(8rem, 12vw, 15rem) 0;
-  }
-
-  /* Reposition floating background for huge widths */
-  .hero::before {
-    right: 0%;
-    width: 1200px;
-    height: 1200px;
-    opacity: 0.1;
-  }
-
-  /* Ensure social sidebar stays near content */
-  .social-sidebar {
-    right: calc((100% - 1800px) / 2 + 40px);
-    gap: 2rem;
-  }
-
-  .social-sidebar a {
-    font-size: 2rem !important;
-  }
-}
-
-/* 4. Hyper-Scaling for 5000px Pro Displays */
-@media (min-width: 4500px) {
-  :root {
-    font-size: 150%;
-  }
-
-  .container {
-    max-width: 2400px;
-  }
-
-  .social-sidebar {
-    right: calc((100% - 2400px) / 2 + 60px);
+  /* No scaling - keep exact 1200px dimensions */
+  body {
+    font-size: 16px;
+    /* Lock base font size */
   }
 }
 
