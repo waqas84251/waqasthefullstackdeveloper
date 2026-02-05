@@ -177,49 +177,9 @@ function App() {
         className={`premium-contact-wrapper ${menuActive ? 'hidden' : ''}`}
         onClick={() => window.$crisp && window.$crisp.push(['do', 'chat:open'])}
       >
-        <div className="curved-ribbon-container">
-          <svg viewBox="0 0 200 200" className="ribbon-svg">
-            <defs>
-              {/* Tightened arc to remove gap */}
-              <path
-                id="ribbon-arc"
-                d="M 35,115 A 65,65 0 0,1 165,115"
-              />
-              {/* Drop shadow for the ribbon */}
-              <filter id="ribbon-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="3" />
-                <feOffset dx="0" dy="2" result="offsetblur" />
-                <feComponentTransfer>
-                  <feFuncA type="linear" slope="0.3" />
-                </feComponentTransfer>
-                <feMerge>
-                  <feMergeNode />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-            </defs>
-
-            {/* White Pill Background */}
-            <use
-              xlinkHref="#ribbon-arc"
-              fill="none"
-              stroke="white"
-              strokeWidth="28"
-              strokeLinecap="round"
-              filter="url(#ribbon-shadow)"
-            />
-
-            {/* Text Following the Path */}
-            <text className="curved-text">
-              <textPath xlinkHref="#ribbon-arc" startOffset="50%" textAnchor="middle">
-                CONTACT ME HERE
-              </textPath>
-            </text>
-
-            {/* The Online Status Dot positioned at the start of the path */}
-            <circle cx="35" cy="115" r="12" fill="white" />
-            <circle cx="35" cy="115" r="6" fill="#2ecc71" className="online-inner-dot" />
-          </svg>
+        <div className="custom-chat-button">
+          <i className="fas fa-comment-dots"></i>
+          <span className="online-badge"></span>
         </div>
       </div>
 
