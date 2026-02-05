@@ -2,9 +2,15 @@
 
 A modern, responsive, and production-ready React portfolio website featuring a stunning dark mode design, smooth animations, and full EmailJS integration for contact functionality.
 
+## 🌐 Live Site
+
+**🔗 [waqasportfolio.site](https://waqasportfolio.site)**
+
 ![Portfolio Preview](https://img.shields.io/badge/React-18.3.1-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-7.3.0-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![EmailJS](https://img.shields.io/badge/EmailJS-Integrated-00C853?style=for-the-badge)
+![Live](https://img.shields.io/badge/Status-Live-success?style=for-the-badge)
+![SEO](https://img.shields.io/badge/SEO-Optimized-blue?style=for-the-badge)
 
 ## ✨ Features
 
