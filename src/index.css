@@ -3489,7 +3489,7 @@ p {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 3rem;
+    gap: 2rem;
   }
 
   .hero-image {
@@ -3508,9 +3508,9 @@ p {
   }
 
   .hero-image-wrapper {
-    width: 460px;
-    /* Increased to Medium-Large */
-    height: 460px;
+    width: 380px;
+    /* Reduced size for better viewport fit */
+    height: 380px;
     max-width: 95vw;
     /* Responsive safety */
     margin: 0 auto;
@@ -3568,13 +3568,13 @@ p {
 
 @media (max-width: 768px) {
   .hero {
-    padding: 120px 0 40px;
+    padding: 100px 0 30px;
   }
 
   .hero-image-wrapper {
-    width: 380px;
-    /* Increased to Medium */
-    height: 380px;
+    width: 280px;
+    /* Compact size for smaller phones */
+    height: 280px;
   }
 
   .hero-text h1 {
