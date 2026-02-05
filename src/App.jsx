@@ -177,10 +177,9 @@ function App() {
         className={`premium-contact-wrapper ${menuActive ? 'hidden' : ''}`}
         onClick={() => window.$crisp && window.$crisp.push(['do', 'chat:open'])}
       >
-        <div className="custom-chat-button">
-          <i className="fas fa-comment-dots"></i>
-          <span className="online-badge"></span>
-        </div>
+        <span className="bubble-element"></span>
+        <span className="bubble-element"></span>
+        <span className="bubble-element"></span>
       </div>
 
       <div className={`social-sidebar ${menuActive ? 'hidden' : ''}`}>
@@ -913,7 +912,7 @@ function App() {
 
             {/* VIP Chat Invite Card - Positioned in the middle below */}
             <div
-              className="chat-invite-card"
+              className="chat-invite-card "
               onClick={() => window.$crisp && window.$crisp.push(['do', 'chat:open'])}
             >
               <div className="chat-avatar-wrapper">
