@@ -14,6 +14,8 @@ import naveedImg from './assets/naveed.jpg';
 import ahmadImg from './assets/ahmad.png';
 
 function App() {
+  const [showPoster, setShowPoster] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(() => {
@@ -34,14 +36,67 @@ function App() {
     }
   }, [darkMode]);
 
-  // Handle scroll effect for navbar
+  const handleEnter = () => {
+    setIsExiting(true);
+    setTimeout(() => {
+      setShowPoster(false);
+      setIsExiting(false);
+    }, 800); // Match CSS transition duration
+  };
+
+  // Lock scroll when poster is active
+  useEffect(() => {
+    if (showPoster) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [showPoster]);
+
+  // Handle scroll effect for navbar and hide poster
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
+      if (window.scrollY > 10 && showPoster && !isExiting) {
+        handleEnter();
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [showPoster, isExiting]);
+
+  // Automatically open website after a few seconds
+  useEffect(() => {
+    if (showPoster && !isExiting) {
+      const timer = setTimeout(() => {
+        handleEnter();
+      }, 3500); // 3.5 seconds to let animations finish and show the info
+      return () => clearTimeout(timer);
+    }
+  }, [showPoster, isExiting]);
+
+  // Scroll Reveal Observer
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, observerOptions);
+
+    const revealElements = document.querySelectorAll('.reveal');
+    revealElements.forEach(el => observer.observe(el));
+
+    return () => {
+      revealElements.forEach(el => observer.unobserve(el));
+    };
+  }, [showPoster]); // Re-run when poster is hidden to find new elements if needed
 
   // Close mobile menu when clicking outside
   useEffect(() => {
@@ -105,7 +160,32 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className={`App ${showPoster ? 'poster-active' : ''}`}>
+      {showPoster && (
+        <div className={`welcome-poster ${isExiting ? 'exiting' : ''}`}>
+          <div className="poster-overlay"></div>
+          <div className="poster-content">
+            <div className="poster-glow"></div>
+            <div className="poster-image-container animate-fade-up">
+              <img src={profileImg} alt="Waqas Khan" className="poster-profile-img" />
+            </div>
+            <h2 className="poster-title animate-fade-up delay-1">Welcome to My Portfolio</h2>
+            <p className="poster-text animate-fade-up delay-2">
+              I’m glad you’re here — explore my work, skills, and creative journey.
+            </p>
+            <button
+              className="btn btn-primary poster-btn animate-fade-up delay-3"
+              onClick={handleEnter}
+            >
+              Enter Portfolio
+            </button>
+          </div>
+          <div className="poster-footer animate-fade-in delay-4">
+            <span>Scroll or Click to Explore</span>
+            <div className="scroll-indicator"></div>
+          </div>
+        </div>
+      )}
 
       {/* ===================================
           NAVBAR
@@ -196,16 +276,16 @@ function App() {
       <section id="home" className="hero">
         <div className="container">
           <div className="hero-content">
-            <div className="hero-text">
-              <h1>
+            <div className="hero-text reveal reveal-up">
+              <h1 className="reveal reveal-up stagger-1">
                 Hi, I'm <span className="highlight">Waqas Khan</span>
                 <br />
-                Full Stack Developer
+                <span className="typing-text">Full Stack Developer</span>
               </h1>
-              <p className="tagline">
+              <p className="tagline reveal reveal-up stagger-2">
                 Building modern, scalable web applications by leading our experienced team with cutting-edge technologies
               </p>
-              <div className="hero-buttons">
+              <div className="hero-buttons reveal reveal-up stagger-3">
                 <button className="btn btn-primary" onClick={() => scrollToSection('contact')}>
                   Get In Touch
                 </button>
@@ -214,7 +294,7 @@ function App() {
                 </button>
               </div>
             </div>
-            <div className="hero-image">
+            <div className="hero-image reveal reveal-scale stagger-2">
               <div className="hero-image-wrapper">
                 <img
                   src={profileImg}
@@ -251,7 +331,7 @@ function App() {
               </div>
 
               {/* Node 1: Education (Top Left) */}
-              <div className="about-node node-top-left education-detailed">
+              <div className="about-node node-top-left education-detailed reveal reveal-left stagger-1">
                 <div className="node-icon"><i className="fas fa-graduation-cap"></i></div>
                 <div className="node-content">
                   <h4>Education</h4>
@@ -290,7 +370,7 @@ function App() {
               </div>
 
               {/* Node 2: Experience (Top Right) */}
-              <div className="about-node node-top-right experience-detailed">
+              <div className="about-node node-top-right experience-detailed reveal reveal-right stagger-1">
                 <div className="node-icon"><i className="fas fa-briefcase"></i></div>
                 <div className="node-content">
                   <h4>Experience</h4>
@@ -337,7 +417,7 @@ function App() {
               </div>
 
               {/* Node 3: Career Goals (Bottom Right) */}
-              <div className="about-node node-bottom-right goals-detailed">
+              <div className="about-node node-bottom-right goals-detailed reveal reveal-right stagger-2">
                 <div className="node-icon"><i className="fas fa-bullseye"></i></div>
                 <div className="node-content">
                   <h4>Career Goal</h4>
@@ -380,7 +460,7 @@ function App() {
               </div>
 
               {/* Node 4: Our Departments (Bottom Left) */}
-              <div className="about-node node-bottom-left departments-detailed">
+              <div className="about-node node-bottom-left departments-detailed reveal reveal-left stagger-2">
                 <div className="node-icon"><i className="fas fa-layer-group"></i></div>
                 <div className="node-content">
                   <h4>Our Departments</h4>
@@ -438,7 +518,7 @@ function App() {
           </div>
           <div className="services-grid">
             {/* Service 1: Website Development */}
-            <div className="card service-card">
+            <div className="card service-card reveal reveal-up stagger-1">
               <div className="service-icon"><i className="fas fa-laptop-code"></i></div>
               <h3>Website Development</h3>
               <ul className="service-features">
@@ -449,7 +529,7 @@ function App() {
             </div>
 
             {/* Service 2: Web App Development */}
-            <div className="card service-card">
+            <div className="card service-card reveal reveal-up stagger-2">
               <div className="service-icon"><i className="fas fa-rocket"></i></div>
               <h3>Web App Development</h3>
               <ul className="service-features">
@@ -460,7 +540,7 @@ function App() {
             </div>
 
             {/* Service 3: Mobile App Development */}
-            <div className="card service-card">
+            <div className="card service-card reveal reveal-up stagger-3">
               <div className="service-icon"><i className="fas fa-mobile-screen-button"></i></div>
               <h3>Mobile App Development</h3>
               <ul className="service-features">
@@ -546,7 +626,7 @@ function App() {
                 {[1, 2, 3].map((setIndex) => (
                   <div className="portfolio-set" key={setIndex}>
                     {/* Project 1 */}
-                    <div className="portfolio-card-modern">
+                    <div className="portfolio-card-modern reveal reveal-up stagger-1">
                       <div className="portfolio-card-header">
                         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="E-commerce" />
                       </div>
@@ -681,7 +761,7 @@ function App() {
                 {[1, 2, 3].map((setIndex) => (
                   <div className="team-set" key={setIndex}>
                     {/* Member 1 */}
-                    <div className="team-card-circular">
+                    <div className="team-card-circular reveal reveal-scale stagger-1">
                       <div className="member-img-circle">
                         <img src={profileImg} alt="Waqas Khan" />
                       </div>
@@ -793,7 +873,7 @@ function App() {
 
               <div className="contact-details">
                 <div
-                  className="contact-item email-box-card"
+                  className="contact-item email-box-card reveal reveal-left stagger-1"
                   aria-label="Send email to nwaqas1166@gmail.com"
                   onClick={(e) => {
                     const email = "nwaqas1166@gmail.com";
