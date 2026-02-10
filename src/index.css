@@ -44,7 +44,7 @@
   /* Animation Tokens */
   --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --reveal-duration: 1.2s;
+  --reveal-duration: 0.8s;
 }
 
 [data-theme='light'] {
@@ -4654,7 +4654,7 @@ body {
   color: white;
   text-align: center;
   overflow: hidden;
-  transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1), opacity 1.2s ease;
+  transition: transform 0.8s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.8s ease;
 }
 
 .welcome-poster.exiting {
@@ -4991,19 +4991,19 @@ body {
 
 /* Stagger Effects */
 .stagger-1 {
-  transition-delay: 0.2s;
+  transition-delay: 0.1s;
 }
 
 .stagger-2 {
-  transition-delay: 0.4s;
+  transition-delay: 0.2s;
 }
 
 .stagger-3 {
-  transition-delay: 0.6s;
+  transition-delay: 0.3s;
 }
 
 .stagger-4 {
-  transition-delay: 0.8s;
+  transition-delay: 0.4s;
 }
 
 /* Typing Animation */
@@ -5016,7 +5016,7 @@ body {
   letter-spacing: 1px;
   color: var(--text-primary);
   opacity: 0.9;
-  animation: typing 4.5s steps(40, end), blink-caret 0.75s step-end infinite;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
   word-break: break-word;
   white-space: normal;
   max-width: 100%;

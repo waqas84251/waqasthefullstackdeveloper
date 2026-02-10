@@ -52,7 +52,7 @@ function App() {
     setTimeout(() => {
       setShowPoster(false);
       setIsExiting(false);
-    }, 800); // Match CSS transition duration
+    }, 500); // Snappier exit
   };
 
   // Lock scroll when poster is active
@@ -81,7 +81,7 @@ function App() {
     if (showPoster && !isExiting) {
       const timer = setTimeout(() => {
         handleEnter();
-      }, 3500); // 3.5 seconds to let animations finish and show the info
+      }, 2500); // 2.5 seconds (Faster transition)
       return () => clearTimeout(timer);
     }
   }, [showPoster, isExiting]);
