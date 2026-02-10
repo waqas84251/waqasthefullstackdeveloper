@@ -33,9 +33,9 @@
   --link-bg: rgba(255, 255, 255, 0.05);
   --menu-gradient: linear-gradient(135deg, var(--bg-secondary) 0%, #1a1a1a 100%);
 
-  --transition-fast: 0.2s ease;
+  --transition-fast: 0.5s ease;
   --transition-normal: 0.3s ease;
-  --transition-slow: 0.5s ease;
+  --transition-slow: 0.1s ease;
 
   /* Bubble Colors */
   --bubble-bg: rgba(224, 218, 218, 0.4);
@@ -44,7 +44,7 @@
   /* Animation Tokens */
   --ease-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-  --reveal-duration: 0.8s;
+  /* --reveal-duration: 0.1s; */
 }
 
 [data-theme='light'] {
@@ -899,7 +899,6 @@ p {
   letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
-  animation: fadeInUp 0.8s ease;
 }
 
 .hero-text h1 {
@@ -910,7 +909,6 @@ p {
   color: var(--text-primary);
   font-weight: 900;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  animation: fadeInUp 1s var(--ease-expo);
 }
 
 .hero-text .highlight {
@@ -936,19 +934,16 @@ p {
   margin-bottom: 3rem;
   letter-spacing: 0.2px;
   font-weight: 400;
-  animation: fadeInUp 1s var(--ease-expo) 0.3s backwards;
 }
 
 .hero-buttons {
   display: flex;
   gap: 1.8rem;
   flex-wrap: wrap;
-  animation: fadeInUp 1s var(--ease-expo) 0.6s backwards;
 }
 
 .hero-image {
   position: relative;
-  animation: fadeInRight 0.8s ease 0.3s backwards;
 }
 
 .hero-image-wrapper {
@@ -4957,66 +4952,40 @@ body {
 /* ===================================
    GLOBAL ANIMATIONS & REVEAL SYSTEM
    =================================== */
+/* Reveal System (Disabled) */
 .reveal {
-  opacity: 0;
-  transition: all var(--reveal-duration) var(--ease-expo);
-  pointer-events: none;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  pointer-events: auto !important;
 }
 
-.reveal-up {
-  transform: translateY(50px);
-}
-
-.reveal-down {
-  transform: translateY(-50px);
-}
-
-.reveal-left {
-  transform: translateX(50px);
-}
-
-.reveal-right {
-  transform: translateX(50px);
-}
-
+.reveal-up,
+.reveal-down,
+.reveal-left,
+.reveal-right,
 .reveal-scale {
-  transform: scale(0.9);
+  transform: none !important;
 }
 
-.reveal.active {
-  opacity: 1;
-  transform: translate(0, 0) scale(1);
-  pointer-events: auto;
-}
-
-/* Stagger Effects */
-.stagger-1 {
-  transition-delay: 0.1s;
-}
-
-.stagger-2 {
-  transition-delay: 0.2s;
-}
-
-.stagger-3 {
-  transition-delay: 0.3s;
-}
-
+/* Stagger Effects (Disabled) */
+.stagger-1,
+.stagger-2,
+.stagger-3,
 .stagger-4 {
-  transition-delay: 0.4s;
+  transition-delay: 0s !important;
 }
 
-/* Typing Animation */
+/* Typing Animation (Disabled) */
 .typing-text {
   display: inline-block;
-  overflow: hidden;
-  border-right: 3px solid var(--accent-primary);
-  padding-right: 5px;
+  overflow: visible;
+  border-right: none;
+  padding-right: 0;
   font-weight: 700;
   letter-spacing: 1px;
   color: var(--text-primary);
-  opacity: 0.9;
-  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+  opacity: 1;
   word-break: break-word;
   white-space: normal;
   max-width: 100%;
