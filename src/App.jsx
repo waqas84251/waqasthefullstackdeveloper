@@ -1026,23 +1026,6 @@ function App() {
       < footer className="footer" >
         <div className="container">
           <div className="footer-content">
-            <div className="social-links">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="linkedin">
-                <i className="fab fa-linkedin"></i>
-              </a>
-              <a href="https://x.com/waqask_niazi" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="twitter">
-                <i className="fab fa-x-twitter"></i>
-              </a>
-              <a href="https://youtube.com/@muhammadwaqaskhan-z5r?si=1Y2hsgAvTvcoBMaF" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="youtube">
-                <i className="fab fa-youtube"></i>
-              </a>
-              <a href="https://vm.tiktok.com/ZSHoddr9ME8hm-OVbh4/" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="tiktok">
-                <i className="fab fa-tiktok"></i>
-              </a>
-              <a href="https://www.facebook.com/share/1D3p7ZD4rC/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="facebook">
-                <i className="fab fa-facebook"></i>
-              </a>
-            </div>
             <p className="footer-text">
               © 2026 Waqas Khan. All rights reserved. Built with React & passion.
             </p>
