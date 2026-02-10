@@ -14,7 +14,15 @@ import naveedImg from './assets/naveed.jpg';
 import ahmadImg from './assets/ahmad.png';
 
 function App() {
-  const [showPoster, setShowPoster] = useState(true);
+  const [showPoster, setShowPoster] = useState(() => {
+    // Skip poster if we are refreshing or have a hash in URL (direct navigation)
+    if (typeof window !== 'undefined') {
+      const hasSeenPoster = sessionStorage.getItem('hasSeenPoster');
+      const hasHash = window.location.hash;
+      return !(hasSeenPoster || hasHash);
+    }
+    return true;
+  });
   const [isExiting, setIsExiting] = useState(false);
   const [menuActive, setMenuActive] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -38,6 +46,9 @@ function App() {
 
   const handleEnter = () => {
     setIsExiting(true);
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('hasSeenPoster', 'true');
+    }
     setTimeout(() => {
       setShowPoster(false);
       setIsExiting(false);
