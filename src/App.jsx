@@ -173,16 +173,6 @@ function App() {
             <p className="poster-text animate-fade-up delay-2">
               I’m glad you’re here — explore my work, skills, and creative journey.
             </p>
-            <button
-              className="btn btn-primary poster-btn animate-fade-up delay-3"
-              onClick={handleEnter}
-            >
-              Enter Portfolio
-            </button>
-          </div>
-          <div className="poster-footer animate-fade-in delay-4">
-            <span>Scroll or Click to Explore</span>
-            <div className="scroll-indicator"></div>
           </div>
         </div>
       )}
