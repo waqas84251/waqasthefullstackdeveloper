@@ -134,19 +134,19 @@ h6 {
 }
 
 h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.2rem, 4.5vw, 3.6rem);
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.8rem, 3.6vw, 2.7rem);
 }
 
 h3 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.35rem, 2.7vw, 1.8rem);
 }
 
 p {
-  font-size: clamp(1rem, 1vw + 0.5rem, 1.25rem);
+  font-size: clamp(0.9rem, 0.9vw + 0.45rem, 1.1rem);
   color: var(--text-secondary);
   line-height: 1.8;
 }
@@ -155,7 +155,7 @@ p {
    UTILITY CLASSES
    =================================== */
 .container {
-  max-width: 1220px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 clamp(1rem, 3vw, 2rem);
   width: 100%;
@@ -328,8 +328,8 @@ p {
 }
 
 .navbar-logo-img {
-  width: 45px;
-  height: 45px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--accent-primary);
@@ -344,7 +344,7 @@ p {
 }
 
 .logo-name {
-  font-size: clamp(1.2rem, 4vw, 1.5rem);
+  font-size: clamp(1.1rem, 3.5vw, 1.35rem);
   /* Responsive font size */
   font-weight: 700;
   background: var(--accent-gradient);
@@ -410,8 +410,8 @@ p {
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem;
-  padding: 0.65rem 1.5rem;
+  font-size: 0.92rem;
+  padding: 0.6rem 1.4rem;
   border-radius: 10px;
   transition: all var(--transition-normal);
   border: 1px solid transparent;
@@ -902,7 +902,7 @@ p {
 }
 
 .hero-text h1 {
-  font-size: clamp(2.8rem, 7vw, 4.8rem);
+  font-size: clamp(2.5rem, 6.3vw, 4.3rem);
   line-height: 1.05;
   letter-spacing: -2px;
   margin-bottom: 2rem;
