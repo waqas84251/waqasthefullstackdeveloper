@@ -79,6 +79,8 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 90%;
+  /* Global scale reduction to match user preference */
 }
 
 body {
@@ -155,7 +157,8 @@ p {
    UTILITY CLASSES
    =================================== */
 .container {
-  max-width: 1100px;
+  max-width: 68rem;
+  /* Scalable width */
   margin: 0 auto;
   padding: 0 clamp(1rem, 3vw, 2rem);
   width: 100%;
@@ -2315,11 +2318,11 @@ p {
 
 .contact-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* Two columns by default */
-  gap: 3rem;
+  grid-template-columns: 1.1fr 0.9fr;
+  /* Adjust ratio slightly */
+  gap: 2.5rem;
   align-items: stretch;
-  max-width: 1000px;
+  max-width: 62rem;
   margin: 0 auto;
 }
 
@@ -2333,7 +2336,7 @@ p {
 }
 
 .contact-info h3 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   background: var(--accent-gradient);
   -webkit-background-clip: text;
   background-clip: text;
@@ -2357,11 +2360,11 @@ p {
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1rem;
   text-decoration: none;
   cursor: pointer;
   background: var(--bg-card);
-  padding: 1.2rem 1.5rem;
+  padding: 1rem 1.25rem;
   border-radius: 16px;
   border: 1px solid var(--border-color);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2444,7 +2447,7 @@ p {
 /* --- Right Side: Form --- */
 .contact-form-wrapper {
   background: var(--bg-card);
-  padding: 2.5rem;
+  padding: 2rem;
   border-radius: 20px;
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-lg);
