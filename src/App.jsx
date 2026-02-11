@@ -12,6 +12,7 @@ import rajaSaifImg from './assets/raja_saif.jpg';
 import abdullahImg from './assets/abdullah.jpg';
 import naveedImg from './assets/naveed.jpg';
 import ahmadImg from './assets/ahmad.png';
+import abdulBasitImg from './assets/abdul_basit.jpg';
 
 function App() {
   const [showPoster, setShowPoster] = useState(() => {
@@ -839,6 +840,16 @@ function App() {
                       <h3>Naveed Abbas</h3>
                       <span className="member-role">SQA Expert</span>
                       <span className="member-tech">Manual & Automation</span>
+                    </div>
+
+                    {/* Member 8: Abdul Basit */}
+                    <div className="team-card-circular">
+                      <div className="member-img-circle">
+                        <img src={abdulBasitImg} alt="Abdul Basit" loading="lazy" />
+                      </div>
+                      <h3>Abdul Basit</h3>
+                      <span className="member-role">Python Expert</span>
+                      <span className="member-tech">Python / Backend</span>
                     </div>
                   </div>
                 ))}
