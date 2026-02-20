@@ -171,6 +171,63 @@ function App() {
     }
   }, []);
 
+  // Handle dragging for horizontal carousels
+  useEffect(() => {
+    const setupDraggable = (id) => {
+      const slider = document.getElementById(id);
+      if (!slider) return;
+
+      let isDown = false;
+      let startX;
+      let scrollLeft;
+
+      const handleMouseDown = (e) => {
+        isDown = true;
+        slider.classList.add('dragging');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+      };
+
+      const handleMouseLeave = () => {
+        isDown = false;
+        slider.classList.remove('dragging');
+      };
+
+      const handleMouseUp = () => {
+        isDown = false;
+        slider.classList.remove('dragging');
+      };
+
+      const handleMouseMove = (e) => {
+        if (!isDown) return;
+        if (e.cancelable) e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 1.5; // Adjust scroll speed
+        slider.scrollLeft = scrollLeft - walk;
+      };
+
+      slider.addEventListener('mousedown', handleMouseDown);
+      slider.addEventListener('mouseleave', handleMouseLeave);
+      slider.addEventListener('mouseup', handleMouseUp);
+      slider.addEventListener('mousemove', handleMouseMove);
+
+      return () => {
+        slider.removeEventListener('mousedown', handleMouseDown);
+        slider.removeEventListener('mouseleave', handleMouseLeave);
+        slider.removeEventListener('mouseup', handleMouseUp);
+        slider.removeEventListener('mousemove', handleMouseMove);
+      };
+    };
+
+    const cleanupPortfolio = setupDraggable('portfolioTrack');
+    const cleanupTeam = setupDraggable('teamTrack');
+
+    return () => {
+      if (cleanupPortfolio) cleanupPortfolio();
+      if (cleanupTeam) cleanupTeam();
+    };
+  }, [showPoster]); // Re-run when poster state changes to ensure elements are ready
+
   return (
     <div className={`App ${showPoster ? 'poster-active' : ''}`}>
       {showPoster && (

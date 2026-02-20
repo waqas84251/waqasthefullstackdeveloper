@@ -1821,15 +1821,23 @@ p {
   -ms-overflow-style: none;
   /* IE/Edge */
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
   cursor: grab;
   position: relative;
+  user-select: none;
+}
+
+.portfolio-track-container.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
 }
 
 .portfolio-track-container::-webkit-scrollbar {
   display: none;
 }
 
-/* Infinite Animation Logic */
+/* Infinite Animation Logic - Restored */
 .portfolio-track-content {
   display: flex;
   gap: 3rem;
@@ -1839,9 +1847,11 @@ p {
   animation: infiniteScroll 50s linear infinite;
 }
 
-.portfolio-track-container:hover .portfolio-track-content {
+.portfolio-carousel-wrapper:hover .portfolio-track-content,
+.portfolio-track-container.dragging .portfolio-track-content {
   animation-play-state: paused;
 }
+
 
 /* Portfolio Set Grouping */
 .portfolio-set {
@@ -1863,6 +1873,7 @@ p {
   position: relative;
   flex-shrink: 0;
   box-shadow: var(--shadow-sm);
+  scroll-snap-align: center;
 }
 
 .portfolio-card-modern:hover {
@@ -2011,7 +2022,6 @@ p {
   }
 
   .portfolio-track-content {
-    animation-duration: 40s;
     padding: 1.5rem 0.5rem;
     gap: 1rem;
   }
@@ -2093,8 +2103,16 @@ p {
   -ms-overflow-style: none;
   /* IE/Edge */
   scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
   cursor: grab;
   position: relative;
+  user-select: none;
+}
+
+.team-track-container.dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
 }
 
 .team-track-container::-webkit-scrollbar {
@@ -2102,7 +2120,7 @@ p {
   /* Chrome/Safari/Opera */
 }
 
-/* Infinite Animation Logic */
+/* Infinite Animation Logic - Restored */
 .team-track-content {
   display: flex;
   gap: 3rem;
@@ -2112,9 +2130,11 @@ p {
   animation: infiniteScroll 50s linear infinite;
 }
 
-.team-track-container:hover .team-track-content {
+.team-carousel-wrapper:hover .team-track-content,
+.team-track-container.dragging .team-track-content {
   animation-play-state: paused;
 }
+
 
 @keyframes infiniteScroll {
   0% {
@@ -2143,6 +2163,7 @@ p {
   transition: all 0.4s ease;
   position: relative;
   flex-shrink: 0;
+  scroll-snap-align: center;
 }
 
 .member-img-circle {
@@ -2246,8 +2267,6 @@ p {
   }
 
   .team-track-content {
-    animation-duration: 40s;
-    /* Slightly faster for mobile engagement */
     padding: 2rem 0.5rem;
   }
 
