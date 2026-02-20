@@ -1837,19 +1837,13 @@ p {
   display: none;
 }
 
-/* Infinite Animation Logic - Restored */
+/* Auto Scroll handled via JS for consistent coordinate system */
 .portfolio-track-content {
   display: flex;
   gap: 3rem;
   width: max-content;
   padding: 2rem 1rem;
   /* Padding for hover effects not to be clipped */
-  animation: infiniteScroll 50s linear infinite;
-}
-
-.portfolio-carousel-wrapper:hover .portfolio-track-content,
-.portfolio-track-container.dragging .portfolio-track-content {
-  animation-play-state: paused;
 }
 
 
@@ -2120,19 +2114,13 @@ p {
   /* Chrome/Safari/Opera */
 }
 
-/* Infinite Animation Logic - Restored */
+/* Auto Scroll handled via JS */
 .team-track-content {
   display: flex;
   gap: 3rem;
   width: max-content;
   padding: 2rem 1rem;
   /* Padding for hover effects not to be clipped */
-  animation: infiniteScroll 50s linear infinite;
-}
-
-.team-carousel-wrapper:hover .team-track-content,
-.team-track-container.dragging .team-track-content {
-  animation-play-state: paused;
 }
 
 

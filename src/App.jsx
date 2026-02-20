@@ -171,15 +171,46 @@ function App() {
     }
   }, []);
 
-  // Handle dragging for horizontal carousels
+  // Handle dragging and auto-scroll for horizontal carousels
   useEffect(() => {
-    const setupDraggable = (id) => {
+    const setupCarousel = (id) => {
       const slider = document.getElementById(id);
       if (!slider) return;
 
+      const track = slider.querySelector('div'); // The track content
       let isDown = false;
+      let isHovered = false;
       let startX;
       let scrollLeft;
+      let rafId;
+      const speed = 0.5; // Auto-scroll speed
+
+      // Auto scroll function
+      const animate = () => {
+        if (!isDown && !isHovered) {
+          slider.scrollLeft += speed;
+
+          // Infinite loop logic: we have 3 sets. 
+          // If we reach the end of the second set, jump back to start of second set.
+          const setWidth = track.scrollWidth / 3;
+          if (slider.scrollLeft >= setWidth * 2) {
+            slider.scrollLeft = setWidth;
+          } else if (slider.scrollLeft <= 0) {
+            slider.scrollLeft = setWidth;
+          }
+        }
+        rafId = requestAnimationFrame(animate);
+      };
+
+      // Initial position - center on the second set
+      const initScroll = () => {
+        const setWidth = track.scrollWidth / 3;
+        slider.scrollLeft = setWidth;
+        rafId = requestAnimationFrame(animate);
+      };
+
+      // Wait for content to load to get correct scrollWidth
+      setTimeout(initScroll, 500);
 
       const handleMouseDown = (e) => {
         isDown = true;
@@ -190,7 +221,12 @@ function App() {
 
       const handleMouseLeave = () => {
         isDown = false;
+        isHovered = false;
         slider.classList.remove('dragging');
+      };
+
+      const handleMouseEnter = () => {
+        isHovered = true;
       };
 
       const handleMouseUp = () => {
@@ -200,33 +236,36 @@ function App() {
 
       const handleMouseMove = (e) => {
         if (!isDown) return;
-        if (e.cancelable) e.preventDefault();
+        e.preventDefault();
         const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1.5; // Adjust scroll speed
+        const walk = (x - startX) * 1.5;
         slider.scrollLeft = scrollLeft - walk;
       };
 
       slider.addEventListener('mousedown', handleMouseDown);
       slider.addEventListener('mouseleave', handleMouseLeave);
+      slider.addEventListener('mouseenter', handleMouseEnter);
       slider.addEventListener('mouseup', handleMouseUp);
       slider.addEventListener('mousemove', handleMouseMove);
 
       return () => {
+        cancelAnimationFrame(rafId);
         slider.removeEventListener('mousedown', handleMouseDown);
         slider.removeEventListener('mouseleave', handleMouseLeave);
+        slider.removeEventListener('mouseenter', handleMouseEnter);
         slider.removeEventListener('mouseup', handleMouseUp);
         slider.removeEventListener('mousemove', handleMouseMove);
       };
     };
 
-    const cleanupPortfolio = setupDraggable('portfolioTrack');
-    const cleanupTeam = setupDraggable('teamTrack');
+    const cleanupPortfolio = setupCarousel('portfolioTrack');
+    const cleanupTeam = setupCarousel('teamTrack');
 
     return () => {
       if (cleanupPortfolio) cleanupPortfolio();
       if (cleanupTeam) cleanupTeam();
     };
-  }, [showPoster]); // Re-run when poster state changes to ensure elements are ready
+  }, [showPoster]);
 
   return (
     <div className={`App ${showPoster ? 'poster-active' : ''}`}>
