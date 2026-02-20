@@ -33,6 +33,10 @@ function App() {
   });
   const [notification, setNotification] = useState({ show: false, type: '', message: '' });
   const formRef = useRef();
+  const teamTrackRef = useRef(null);
+  const portfolioTrackRef = useRef(null);
+  const isHoveringTeam = useRef(false);
+  const isHoveringPortfolio = useRef(false);
 
   // Handle Theme Toggle
   useEffect(() => {
@@ -161,6 +165,30 @@ function App() {
     }
   };
 
+  // Auto-scroll functionality for Portfolio and Team tracks
+  useEffect(() => {
+    const scrollInterval = 1; // ms (~60fps for smoothness)
+    const scrollStep = 1.5; // px (Medium-Fast speed)
+
+    const autoScroll = (ref, hoveringRef) => {
+      if (ref.current && !hoveringRef.current) {
+        ref.current.scrollLeft += scrollStep;
+
+        // Reset to start if reached the end
+        if (Math.ceil(ref.current.scrollLeft + ref.current.clientWidth) >= ref.current.scrollWidth) {
+          ref.current.scrollLeft = 0;
+        }
+      }
+    };
+
+    const interval = setInterval(() => {
+      autoScroll(portfolioTrackRef, isHoveringPortfolio);
+      autoScroll(teamTrackRef, isHoveringTeam);
+    }, scrollInterval);
+
+    return () => clearInterval(interval);
+  }, []);
+
   // Disable Automated Crisp Features (Welcome & Triggers)
   useEffect(() => {
     if (window.$crisp) {
@@ -170,102 +198,6 @@ function App() {
       window.$crisp.push(["set", "chat:triggers", [false]]);
     }
   }, []);
-
-  // Handle dragging and auto-scroll for horizontal carousels
-  useEffect(() => {
-    const setupCarousel = (id) => {
-      const slider = document.getElementById(id);
-      if (!slider) return;
-
-      const track = slider.querySelector('div'); // The track content
-      let isDown = false;
-      let isHovered = false;
-      let startX;
-      let scrollLeft;
-      let rafId;
-      const speed = 0.5; // Auto-scroll speed
-
-      // Auto scroll function
-      const animate = () => {
-        if (!isDown && !isHovered) {
-          slider.scrollLeft += speed;
-
-          // Infinite loop logic: we have 3 sets. 
-          // If we reach the end of the second set, jump back to start of second set.
-          const setWidth = track.scrollWidth / 3;
-          if (slider.scrollLeft >= setWidth * 2) {
-            slider.scrollLeft = setWidth;
-          } else if (slider.scrollLeft <= 0) {
-            slider.scrollLeft = setWidth;
-          }
-        }
-        rafId = requestAnimationFrame(animate);
-      };
-
-      // Initial position - center on the second set
-      const initScroll = () => {
-        const setWidth = track.scrollWidth / 3;
-        slider.scrollLeft = setWidth;
-        rafId = requestAnimationFrame(animate);
-      };
-
-      // Wait for content to load to get correct scrollWidth
-      setTimeout(initScroll, 500);
-
-      const handleMouseDown = (e) => {
-        isDown = true;
-        slider.classList.add('dragging');
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-      };
-
-      const handleMouseLeave = () => {
-        isDown = false;
-        isHovered = false;
-        slider.classList.remove('dragging');
-      };
-
-      const handleMouseEnter = () => {
-        isHovered = true;
-      };
-
-      const handleMouseUp = () => {
-        isDown = false;
-        slider.classList.remove('dragging');
-      };
-
-      const handleMouseMove = (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        slider.scrollLeft = scrollLeft - walk;
-      };
-
-      slider.addEventListener('mousedown', handleMouseDown);
-      slider.addEventListener('mouseleave', handleMouseLeave);
-      slider.addEventListener('mouseenter', handleMouseEnter);
-      slider.addEventListener('mouseup', handleMouseUp);
-      slider.addEventListener('mousemove', handleMouseMove);
-
-      return () => {
-        cancelAnimationFrame(rafId);
-        slider.removeEventListener('mousedown', handleMouseDown);
-        slider.removeEventListener('mouseleave', handleMouseLeave);
-        slider.removeEventListener('mouseenter', handleMouseEnter);
-        slider.removeEventListener('mouseup', handleMouseUp);
-        slider.removeEventListener('mousemove', handleMouseMove);
-      };
-    };
-
-    const cleanupPortfolio = setupCarousel('portfolioTrack');
-    const cleanupTeam = setupCarousel('teamTrack');
-
-    return () => {
-      if (cleanupPortfolio) cleanupPortfolio();
-      if (cleanupTeam) cleanupTeam();
-    };
-  }, [showPoster]);
 
   return (
     <div className={`App ${showPoster ? 'poster-active' : ''}`}>
@@ -719,101 +651,105 @@ function App() {
             </button>
 
             {/* Carousel Track */}
-            <div className="portfolio-track-container" id="portfolioTrack">
+            <div
+              className="portfolio-track-container"
+              id="portfolioTrack"
+              ref={portfolioTrackRef}
+              onMouseEnter={() => isHoveringPortfolio.current = true}
+              onMouseLeave={() => isHoveringPortfolio.current = false}
+            >
               <div className="portfolio-track-content">
-                {[1, 2, 3].map((setIndex) => (
-                  <div className="portfolio-set" key={setIndex}>
-                    {/* Project 1 */}
-                    <div className="portfolio-card-modern reveal reveal-up stagger-1">
-                      <div className="portfolio-card-header">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="E-commerce" />
-                      </div>
-                      <div className="portfolio-card-body">
-                        <h3>E-commerce Store</h3>
-                        <span className="portfolio-card-type">Full Stack App</span>
-                        <div className="portfolio-card-tags">
-                          <span>React</span>
-                          <span>Node.js</span>
-                        </div>
-                      </div>
+                <div className="portfolio-set">
+                  {/* Project 1 */}
+                  <div className="portfolio-card-modern reveal reveal-up stagger-1">
+                    <div className="portfolio-card-header">
+                      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="E-commerce" />
                     </div>
-
-                    {/* Project 2 */}
-                    <div className="portfolio-card-modern">
-                      <div className="portfolio-card-header">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Analytics" />
-                      </div>
-                      <div className="portfolio-card-body">
-                        <h3>Analytics Pro</h3>
-                        <span className="portfolio-card-type">Dashboard</span>
-                        <div className="portfolio-card-tags">
-                          <span>D3.js</span>
-                          <span>Firebase</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Project 3 */}
-                    <div className="portfolio-card-modern">
-                      <div className="portfolio-card-header">
-                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop" alt="Social App" />
-                      </div>
-                      <div className="portfolio-card-body">
-                        <h3>Connect Social</h3>
-                        <span className="portfolio-card-type">Mobile App</span>
-                        <div className="portfolio-card-tags">
-                          <span>Socket.io</span>
-                          <span>PostgreSQL</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Project 4 */}
-                    <div className="portfolio-card-modern">
-                      <div className="portfolio-card-header">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="Task Manager" />
-                      </div>
-                      <div className="portfolio-card-body">
-                        <h3>Task Flow</h3>
-                        <span className="portfolio-card-type">Productivity</span>
-                        <div className="portfolio-card-tags">
-                          <span>Redux</span>
-                          <span>Express</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Project 5 */}
-                    <div className="portfolio-card-modern">
-                      <div className="portfolio-card-header">
-                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop" alt="Portfolio" />
-                      </div>
-                      <div className="portfolio-card-body">
-                        <h3>Dev Portfolio</h3>
-                        <span className="portfolio-card-type">Personal Site</span>
-                        <div className="portfolio-card-tags">
-                          <span>Framer</span>
-                          <span>CSS3</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Project 6 */}
-                    <div className="portfolio-card-modern">
-                      <div className="portfolio-card-header">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Fitness App" />
-                      </div>
-                      <div className="portfolio-card-body">
-                        <h3>FitTrack Pro</h3>
-                        <span className="portfolio-card-type">Health Tech</span>
-                        <div className="portfolio-card-tags">
-                          <span>React Native</span>
-                          <span>MySQL</span>
-                        </div>
+                    <div className="portfolio-card-body">
+                      <h3>E-commerce Store</h3>
+                      <span className="portfolio-card-type">Full Stack App</span>
+                      <div className="portfolio-card-tags">
+                        <span>React</span>
+                        <span>Node.js</span>
                       </div>
                     </div>
                   </div>
-                ))}
+
+                  {/* Project 2 */}
+                  <div className="portfolio-card-modern">
+                    <div className="portfolio-card-header">
+                      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Analytics" />
+                    </div>
+                    <div className="portfolio-card-body">
+                      <h3>Analytics Pro</h3>
+                      <span className="portfolio-card-type">Dashboard</span>
+                      <div className="portfolio-card-tags">
+                        <span>D3.js</span>
+                        <span>Firebase</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Project 3 */}
+                  <div className="portfolio-card-modern">
+                    <div className="portfolio-card-header">
+                      <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop" alt="Social App" />
+                    </div>
+                    <div className="portfolio-card-body">
+                      <h3>Connect Social</h3>
+                      <span className="portfolio-card-type">Mobile App</span>
+                      <div className="portfolio-card-tags">
+                        <span>Socket.io</span>
+                        <span>PostgreSQL</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Project 4 */}
+                  <div className="portfolio-card-modern">
+                    <div className="portfolio-card-header">
+                      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="Task Manager" />
+                    </div>
+                    <div className="portfolio-card-body">
+                      <h3>Task Flow</h3>
+                      <span className="portfolio-card-type">Productivity</span>
+                      <div className="portfolio-card-tags">
+                        <span>Redux</span>
+                        <span>Express</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Project 5 */}
+                  <div className="portfolio-card-modern">
+                    <div className="portfolio-card-header">
+                      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop" alt="Portfolio" />
+                    </div>
+                    <div className="portfolio-card-body">
+                      <h3>Dev Portfolio</h3>
+                      <span className="portfolio-card-type">Personal Site</span>
+                      <div className="portfolio-card-tags">
+                        <span>Framer</span>
+                        <span>CSS3</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Project 6 */}
+                  <div className="portfolio-card-modern">
+                    <div className="portfolio-card-header">
+                      <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Fitness App" />
+                    </div>
+                    <div className="portfolio-card-body">
+                      <h3>FitTrack Pro</h3>
+                      <span className="portfolio-card-type">Health Tech</span>
+                      <div className="portfolio-card-tags">
+                        <span>React Native</span>
+                        <span>MySQL</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -822,7 +758,7 @@ function App() {
       {/* ===================================
           TEAM SECTION (INTERACTIVE CAROUSEL)
           =================================== */}
-      <section id="team" className="section team-section">
+      < section id="team" className="section team-section" >
         <div className="container">
           <div className="section-title">
             <h2>Our Expert Team</h2>
@@ -854,106 +790,110 @@ function App() {
             </button>
 
             {/* Carousel Track */}
-            <div className="team-track-container" id="teamTrack">
+            <div
+              className="team-track-container"
+              id="teamTrack"
+              ref={teamTrackRef}
+              onMouseEnter={() => isHoveringTeam.current = true}
+              onMouseLeave={() => isHoveringTeam.current = false}
+            >
               <div className="team-track-content">
-                {[1, 2, 3].map((setIndex) => (
-                  <div className="team-set" key={setIndex}>
-                    {/* Member 1 */}
-                    <div className="team-card-circular reveal reveal-scale stagger-1">
-                      <div className="member-img-circle">
-                        <img src={profileImg} alt="Waqas Khan" />
-                      </div>
-                      <h3>Waqas Khan</h3>
-                      <span className="member-role">Team Lead</span>
-                      <span className="member-tech">MERN Stack Expert</span>
+                <div className="team-set">
+                  {/* Member 1 */}
+                  <div className="team-card-circular reveal reveal-scale stagger-1">
+                    <div className="member-img-circle">
+                      <img src={profileImg} alt="Waqas Khan" />
                     </div>
-
-                    {/* Member 1.5: Muhammad Ahmad */}
-                    <div className="team-card-circular">
-                      <div className="member-img-circle">
-                        <img src={ahmadImg} alt="Muhammad Ahmad" loading="lazy" />
-                      </div>
-                      <h3>Muhammad Ahmad</h3>
-                      <span className="member-role">Software Engineer</span>
-                      <span className="member-tech">MERN Stack</span>
-                    </div>
-
-                    {/* Member 2 */}
-                    <div className="team-card-circular">
-                      <div className="member-img-circle">
-                        <img src={huzaifaImg} alt="Huzaifa Nadeem" loading="lazy" />
-                      </div>
-                      <h3>Huzaifa Nadeem</h3>
-                      <span className="member-role">UI/UX Designer</span>
-                      <span className="member-tech">Figma Specialist</span>
-                    </div>
-
-                    {/* Member 3 */}
-                    <div className="team-card-circular">
-                      <div className="member-img-circle">
-                        <img src={harisImg} alt="Haris Sultan Shah" loading="lazy" />
-                      </div>
-                      <h3>Haris Sultan Shah</h3>
-                      <span className="member-role">Frontend Expert</span>
-                      <span className="member-tech">React / Tailwind</span>
-                    </div>
-
-                    {/* Member 4 */}
-                    <div className="team-card-circular">
-                      <div className="member-img-circle">
-                        <img src={abdulRehmanImg} alt="Abdul Rehman Khan" loading="lazy" />
-                      </div>
-                      <h3>Abdul Rehman Khan</h3>
-                      <span className="member-role">Backend Expert</span>
-                      <span className="member-tech">Node.js / Express</span>
-                    </div>
-
-                    {/* Member 5 */}
-                    <div className="team-card-circular">
-                      <div className="member-img-circle">
-                        <img src={rajaSaifImg} alt="Raja Saif" loading="lazy" />
-                      </div>
-                      <h3>Raja Saif</h3>
-                      <span className="member-role">Modern Web Expert</span>
-                      <span className="member-tech">Laravel / PHP</span>
-                    </div>
-
-                    {/* Member 6 */}
-                    <div className="team-card-circular">
-                      <div className="member-img-circle">
-                        <img src={abdullahImg} alt="Chaudhary Abdullah" loading="lazy" />
-                      </div>
-                      <h3>Chaudhary Abdullah</h3>
-                      <span className="member-role">Mobile App Developer</span>
-                      <span className="member-tech">React Native</span>
-                    </div>
-
-                    {/* Member 7 */}
-                    <div className="team-card-circular">
-                      <div className="member-img-circle">
-                        <img src={naveedImg} alt="Naveed Abbas" loading="lazy" />
-                      </div>
-                      <h3>Naveed Abbas</h3>
-                      <span className="member-role">SQA Expert</span>
-                      <span className="member-tech">Manual & Automation</span>
-                    </div>
-
-                    {/* Member 8: Abdul Basit */}
-                    <div className="team-card-circular">
-                      <div className="member-img-circle">
-                        <img src={abdulBasitImg} alt="Abdul Basit" loading="lazy" />
-                      </div>
-                      <h3>Abdul Basit</h3>
-                      <span className="member-role">Python Expert</span>
-                      <span className="member-tech">Python / Backend</span>
-                    </div>
+                    <h3>Waqas Khan</h3>
+                    <span className="member-role">Team Lead</span>
+                    <span className="member-tech">MERN Stack Expert</span>
                   </div>
-                ))}
+
+                  {/* Member 1.5: Muhammad Ahmad */}
+                  <div className="team-card-circular">
+                    <div className="member-img-circle">
+                      <img src={ahmadImg} alt="Muhammad Ahmad" loading="lazy" />
+                    </div>
+                    <h3>Muhammad Ahmad</h3>
+                    <span className="member-role">Software Engineer</span>
+                    <span className="member-tech">MERN Stack</span>
+                  </div>
+
+                  {/* Member 2 */}
+                  <div className="team-card-circular">
+                    <div className="member-img-circle">
+                      <img src={huzaifaImg} alt="Huzaifa Nadeem" loading="lazy" />
+                    </div>
+                    <h3>Huzaifa Nadeem</h3>
+                    <span className="member-role">UI/UX Designer</span>
+                    <span className="member-tech">Figma Specialist</span>
+                  </div>
+
+                  {/* Member 3 */}
+                  <div className="team-card-circular">
+                    <div className="member-img-circle">
+                      <img src={harisImg} alt="Haris Sultan Shah" loading="lazy" />
+                    </div>
+                    <h3>Haris Sultan Shah</h3>
+                    <span className="member-role">Frontend Expert</span>
+                    <span className="member-tech">React / Tailwind</span>
+                  </div>
+
+                  {/* Member 4 */}
+                  <div className="team-card-circular">
+                    <div className="member-img-circle">
+                      <img src={abdulRehmanImg} alt="Abdul Rehman Khan" loading="lazy" />
+                    </div>
+                    <h3>Abdul Rehman Khan</h3>
+                    <span className="member-role">Backend Expert</span>
+                    <span className="member-tech">Node.js / Express</span>
+                  </div>
+
+                  {/* Member 5 */}
+                  <div className="team-card-circular">
+                    <div className="member-img-circle">
+                      <img src={rajaSaifImg} alt="Raja Saif" loading="lazy" />
+                    </div>
+                    <h3>Raja Saif</h3>
+                    <span className="member-role">Modern Web Expert</span>
+                    <span className="member-tech">Laravel / PHP</span>
+                  </div>
+
+                  {/* Member 6 */}
+                  <div className="team-card-circular">
+                    <div className="member-img-circle">
+                      <img src={abdullahImg} alt="Chaudhary Abdullah" loading="lazy" />
+                    </div>
+                    <h3>Chaudhary Abdullah</h3>
+                    <span className="member-role">Mobile App Developer</span>
+                    <span className="member-tech">React Native</span>
+                  </div>
+
+                  {/* Member 7 */}
+                  <div className="team-card-circular">
+                    <div className="member-img-circle">
+                      <img src={naveedImg} alt="Naveed Abbas" loading="lazy" />
+                    </div>
+                    <h3>Naveed Abbas</h3>
+                    <span className="member-role">SQA Expert</span>
+                    <span className="member-tech">Manual & Automation</span>
+                  </div>
+
+                  {/* Member 8: Abdul Basit */}
+                  <div className="team-card-circular">
+                    <div className="member-img-circle">
+                      <img src={abdulBasitImg} alt="Abdul Basit" loading="lazy" />
+                    </div>
+                    <h3>Abdul Basit</h3>
+                    <span className="member-role">Python Expert</span>
+                    <span className="member-tech">Python / Backend</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
 
       {/* ===================================
