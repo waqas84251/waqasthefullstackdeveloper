@@ -13,6 +13,7 @@ import abdullahImg from './assets/abdullah.jpg';
 import naveedImg from './assets/naveed.jpg';
 import ahmadImg from './assets/ahmad.png';
 import abdulBasitImg from './assets/abdul_basit.jpg';
+import posLogoImg from './assets/pos_logo.png';
 
 function App() {
   const [showPoster, setShowPoster] = useState(() => {
@@ -164,30 +165,6 @@ function App() {
       setMenuActive(false);
     }
   };
-
-  // Auto-scroll functionality for Portfolio and Team tracks
-  useEffect(() => {
-    const scrollInterval = 1; // ms (~60fps for smoothness)
-    const scrollStep = 1.5; // px (Medium-Fast speed)
-
-    const autoScroll = (ref, hoveringRef) => {
-      if (ref.current && !hoveringRef.current) {
-        ref.current.scrollLeft += scrollStep;
-
-        // Reset to start if reached the end
-        if (Math.ceil(ref.current.scrollLeft + ref.current.clientWidth) >= ref.current.scrollWidth) {
-          ref.current.scrollLeft = 0;
-        }
-      }
-    };
-
-    const interval = setInterval(() => {
-      autoScroll(portfolioTrackRef, isHoveringPortfolio);
-      autoScroll(teamTrackRef, isHoveringTeam);
-    }, scrollInterval);
-
-    return () => clearInterval(interval);
-  }, []);
 
   // Disable Automated Crisp Features (Welcome & Triggers)
   useEffect(() => {
@@ -660,6 +637,35 @@ function App() {
             >
               <div className="portfolio-track-content">
                 <div className="portfolio-set">
+                  {/* VIP POS System Project */}
+                  <div className="portfolio-card-modern reveal reveal-up stagger-1 vip-card">
+                    <div className="portfolio-card-header">
+                      <div className="vip-badge">VIP</div>
+                      <div className="custom-pos-logo">
+                        <div className="logo-circle">
+                          <i className="fas fa-shopping-basket"></i>
+                          <div className="logo-text-glow">P.O.S</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="portfolio-card-body">
+                      <h3>VIP POS System</h3>
+                      <span className="portfolio-card-type">Enterprise Solution</span>
+                      <div className="portfolio-card-tags">
+                        <span>Blade</span>
+                        <span>Laravel</span>
+                        <span>MySQL</span>
+                      </div>
+                      <div className="portfolio-card-actions">
+                        <a href="https://waqas84251.github.io/posflowgallery/" className="portfolio-btn btn-explore">
+                          <i className="fas fa-globe"></i> Explore Flow on Website
+                        </a>
+                        <a href="https://github.com/waqas84251/possystem" className="portfolio-btn btn-source">
+                          <i className="fas fa-code"></i> View Source Code
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                   {/* Project 1 */}
                   <div className="portfolio-card-modern reveal reveal-up stagger-1">
                     <div className="portfolio-card-header">

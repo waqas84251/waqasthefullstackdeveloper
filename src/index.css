@@ -1836,12 +1836,12 @@ p {
   width: max-content;
   padding: 2rem 1rem;
   /* Padding for hover effects not to be clipped */
-  animation: infiniteScroll 50s linear infinite;
+  /* animation: infiniteScroll 50s linear infinite; */
 }
 
-.portfolio-track-container:hover .portfolio-track-content {
+/* .portfolio-track-container:hover .portfolio-track-content {
   animation-play-state: paused;
-}
+} */
 
 /* Portfolio Set Grouping */
 .portfolio-set {
@@ -1852,7 +1852,7 @@ p {
 
 /* Individual Card Styling (Modern Card) */
 .portfolio-card-modern {
-  width: 280px;
+  width: 220px;
   background: var(--bg-card);
   border: 1px solid var(--border-color);
   border-radius: 16px;
@@ -1873,7 +1873,7 @@ p {
 
 .portfolio-card-header {
   width: 100%;
-  height: 180px;
+  height: 140px;
   overflow: hidden;
   position: relative;
 }
@@ -1885,12 +1885,72 @@ p {
   transition: transform 0.6s ease;
 }
 
+.vip-card .portfolio-card-header {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-pos-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.logo-circle {
+  width: 90px;
+  height: 90px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 3px solid #ffd700;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3), inset 0 0 15px rgba(255, 215, 0, 0.1);
+  animation: logoPulse 4s infinite alternate ease-in-out;
+}
+
+.logo-circle i {
+  font-size: 1.8rem;
+  color: #ffd700;
+  margin-bottom: 2px;
+  filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+}
+
+.logo-text-glow {
+  font-weight: 900;
+  font-size: 0.9rem;
+  color: #fff;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px #ffd700;
+}
+
+@keyframes logoPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  }
+
+  100% {
+    transform: scale(1.05);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.5);
+  }
+}
+
 .portfolio-card-modern:hover .portfolio-card-header img {
   transform: scale(1.05);
 }
 
 .portfolio-card-body {
-  padding: 1.5rem;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -1898,7 +1958,7 @@ p {
 }
 
 .portfolio-card-modern h3 {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   margin-bottom: 0.3rem;
   color: var(--text-primary);
   font-weight: 700;
@@ -1931,6 +1991,104 @@ p {
   font-weight: 500;
 }
 
+/* VIP Card Enhancements */
+.vip-card {
+  border: 2px solid #ffd700 !important;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2) !important;
+  background: var(--bg-card);
+}
+
+.vip-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(255, 215, 0, 0.35) !important;
+  border-color: #ffcc00 !important;
+}
+
+.vip-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  color: #000;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.vip-badge::before {
+  content: '\f521';
+  /* Crown icon */
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 0.8rem;
+}
+
+.vip-card .portfolio-card-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(255, 215, 0, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.portfolio-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.portfolio-btn {
+  text-align: center;
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-explore {
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  color: white !important;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-explore:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5);
+  filter: brightness(1.1);
+}
+
+.btn-source {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color);
+}
+
+.btn-source:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--text-secondary);
+  transform: translateY(-3px);
+}
+
 /* Portfolio Responsiveness */
 
 /* Medium Devices (Tablets: 768px - 1220px) */
@@ -1940,8 +2098,8 @@ p {
   }
 
   .portfolio-card-modern {
-    width: 320px;
-    /* Optimal size for tablets */
+    width: 250px;
+    /* Balanced size for tablets */
   }
 
   .portfolio-card-header {
@@ -1955,6 +2113,16 @@ p {
   .portfolio-track-content {
     gap: 2rem;
     padding: 2rem 1.5rem;
+  }
+
+  /* VIP Card Tablet Fixes */
+  .logo-circle {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .logo-circle i {
+    font-size: 1.5rem !important;
   }
 
   /* Hide navigation buttons on tablets - encourage swipe */
@@ -1979,10 +2147,9 @@ p {
   }
 
   .portfolio-card-modern {
-    width: 180px;
-    /* Reduced width to fit 2 cards */
-    max-width: 48%;
-    /* Ensure they don't grow too large */
+    width: 170px;
+    /* Compact size for mobile */
+    max-width: 46%;
     margin: 0;
   }
 
@@ -2005,13 +2172,59 @@ p {
     margin-bottom: 0.8rem;
   }
 
+  .vip-card:hover {
+    transform: none !important;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2) !important;
+  }
+
   .portfolio-card-tags span {
     font-size: 0.65rem;
     padding: 0.15rem 0.5rem;
   }
 
+  /* VIP Card Mobile Fixes */
+  .vip-card {
+    border-width: 1.5px !important;
+  }
+
+  .logo-circle {
+    width: 60px !important;
+    height: 60px !important;
+    border-width: 2px !important;
+  }
+
+  .logo-circle i {
+    font-size: 1.2rem !important;
+  }
+
+  .logo-text-glow {
+    font-size: 0.65rem !important;
+  }
+
+  .vip-badge {
+    top: 5px !important;
+    right: 5px !important;
+    padding: 2px 7px !important;
+    font-size: 0.55rem !important;
+  }
+
+  .vip-badge::before {
+    font-size: 0.6rem !important;
+  }
+
+  .portfolio-card-actions {
+    margin-top: 1rem !important;
+    gap: 0.5rem !important;
+  }
+
+  .portfolio-btn {
+    padding: 0.5rem 0.6rem !important;
+    font-size: 0.7rem !important;
+    border-radius: 6px !important;
+  }
+
   .portfolio-track-content {
-    animation-duration: 40s;
+    /* animation-duration: 40s; */
     padding: 1.5rem 0.5rem;
     gap: 1rem;
   }
@@ -2246,7 +2459,7 @@ p {
   }
 
   .team-track-content {
-    animation-duration: 40s;
+    /* animation-duration: 40s; */
     /* Slightly faster for mobile engagement */
     padding: 2rem 0.5rem;
   }
