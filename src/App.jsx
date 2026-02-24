@@ -934,11 +934,17 @@ function App() {
                     const subject = encodeURIComponent("Project Inquiry from Portfolio");
                     const body = encodeURIComponent("Hello 👋\n\nI visited your portfolio and I’m impressed with your work.\n\nI’d like to discuss a potential project.\n\nLooking forward to your response.");
 
-                    // Gmail Direct Compose URL
-                    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+                    // Detect if it's a mobile device
+                    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-                    // Open Gmail in a new tab
-                    window.open(gmailUrl, '_blank');
+                    if (isMobile) {
+                      // Use mailto: for mobile apps to ensure subject and body are pre-filled
+                      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+                    } else {
+                      // Gmail Direct Compose URL for Desktop
+                      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+                      window.open(gmailUrl, '_blank');
+                    }
 
                     // Always copy to clipboard as fallback
                     navigator.clipboard.writeText(email);
