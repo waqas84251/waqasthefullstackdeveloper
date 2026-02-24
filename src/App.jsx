@@ -643,17 +643,18 @@ function App() {
                       <div className="vip-badge">VIP</div>
                       <div className="custom-pos-logo">
                         <div className="logo-circle">
-                          <i className="fas fa-shopping-basket"></i>
+                          <i className="fas fa-file-invoice-dollar"></i>
                           <div className="logo-text-glow">P.O.S</div>
                         </div>
                       </div>
                     </div>
                     <div className="portfolio-card-body">
                       <h3>VIP POS System</h3>
-                      <span className="portfolio-card-type">Enterprise Solution</span>
+                      <span className="portfolio-card-type">Next-Gen Inventory & Retail Management</span>
                       <div className="portfolio-card-tags">
                         <span>Blade</span>
                         <span>Laravel</span>
+                        <span>JavaScript</span>
                         <span>MySQL</span>
                       </div>
                       <div className="portfolio-card-actions">
@@ -661,7 +662,37 @@ function App() {
                           <i className="fas fa-globe"></i> Explore Flow on Website
                         </a>
                         <a href="https://github.com/waqas84251/possystem" className="portfolio-btn btn-source">
-                          <i className="fas fa-code"></i> View Source Code
+                          <i className="fab fa-github"></i> View Source Code
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Donation Management System Project */}
+                  <div className="portfolio-card-modern reveal reveal-up stagger-1 donation-card">
+                    <div className="portfolio-card-header">
+                      <div className="donation-badge">New</div>
+                      <div className="custom-donation-logo">
+                        <div className="donation-logo-circle">
+                          <i className="fas fa-handshake-angle"></i>
+                          <div className="donation-logo-text">Donation Records</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="portfolio-card-body">
+                      <h3>Donation Management System</h3>
+                      <span className="portfolio-card-type">NGO & Mosque Solutions</span>
+                      <div className="portfolio-card-tags">
+                        <span>MongoDB</span>
+                        <span>Express</span>
+                        <span>React</span>
+                        <span>Node.js</span>
+                      </div>
+                      <div className="portfolio-card-actions">
+                        <a href="https://waqas84251.github.io/DonationRecordSystem/" className="portfolio-btn btn-explore" target="_blank" rel="noopener noreferrer">
+                          <i className="fas fa-globe"></i> Explore Flow on Website
+                        </a>
+                        <a href="https://github.com/waqas84251/DonationProject" className="portfolio-btn btn-source" target="_blank" rel="noopener noreferrer">
+                          <i className="fab fa-github"></i> View Source Code
                         </a>
                       </div>
                     </div>

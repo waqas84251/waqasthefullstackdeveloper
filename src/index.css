@@ -2042,6 +2042,119 @@ p {
   pointer-events: none;
 }
 
+/* Donation Card Enhancements */
+.donation-card {
+  border: 2px solid #10b981 !important;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2) !important;
+  background: var(--bg-card);
+}
+
+.donation-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(16, 185, 129, 0.35) !important;
+  border-color: #059669 !important;
+}
+
+.donation-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.donation-badge::before {
+  content: '\f4be';
+  /* Hand Holding Heart icon */
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  font-size: 0.8rem;
+}
+
+.custom-donation-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.donation-logo-circle {
+  width: 100px;
+  height: 100px;
+  background: rgba(16, 185, 129, 0.05);
+  border: 4px double #10b981;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.4), inset 0 0 20px rgba(16, 185, 129, 0.2);
+  animation: logoFloat 4s infinite alternate ease-in-out;
+}
+
+.donation-logo-circle i {
+  font-size: 2.2rem;
+  color: #10b981;
+  margin-bottom: 5px;
+  filter: drop-shadow(0 0 10px rgba(16, 185, 129, 0.6));
+}
+
+.donation-logo-text {
+  font-weight: 800;
+  font-size: 0.65rem;
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 80%;
+  line-height: 1.1;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.6), 0 0 25px #10b981;
+}
+
+@keyframes logoFloat {
+  0% {
+    transform: translateY(0) scale(1.0);
+  }
+
+  100% {
+    transform: translateY(-8px) scale(1.05);
+  }
+}
+
+.donation-card .portfolio-card-header {
+  background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.donation-card .portfolio-card-header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
 .portfolio-card-actions {
   display: flex;
   flex-direction: column;
