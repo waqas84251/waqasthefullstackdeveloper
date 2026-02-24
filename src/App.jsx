@@ -680,7 +680,7 @@ function App() {
                     </div>
                     <div className="portfolio-card-body">
                       <h3>Donation Management System</h3>
-                      <span className="portfolio-card-type">NGO & Mosque Solutions</span>
+                      <span className="portfolio-card-type">NGO & Donation Solutions</span>
                       <div className="portfolio-card-tags">
                         <span>MongoDB</span>
                         <span>Express</span>
