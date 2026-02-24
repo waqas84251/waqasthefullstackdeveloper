@@ -674,7 +674,7 @@ function App() {
                       <div className="custom-donation-logo">
                         <div className="donation-logo-circle">
                           <i className="fas fa-handshake-angle"></i>
-                          <div className="donation-logo-text">Donation Records</div>
+                          <div className="donation-logo-text">NGO and Donation <br /> Solutions</div>
                         </div>
                       </div>
                     </div>
