@@ -711,7 +711,7 @@ function App() {
                       </div>
                       <div className="portfolio-card-actions">
                         <a href="https://waqas84251.github.io/calculator/" className="portfolio-btn btn-explore" target="_blank" rel="noopener noreferrer">
-                          <i className="fas fa-globe"></i> Explore Flow on Website
+                          <i className="fas fa-globe"></i> Explore My Website
                         </a>
                         <a href="https://github.com/waqas84251/calculator" className="portfolio-btn btn-source" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-github"></i> View Source Code
