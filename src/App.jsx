@@ -14,6 +14,7 @@ import naveedImg from './assets/naveed.jpg';
 import ahmadImg from './assets/ahmad.png';
 import abdulBasitImg from './assets/abdul_basit.jpg';
 import posLogoImg from './assets/pos_logo.png';
+import casioCalculatorsImg from './assets/casio_calculator.png';
 
 function App() {
   const [showPoster, setShowPoster] = useState(() => {
@@ -692,6 +693,27 @@ function App() {
                           <i className="fas fa-globe"></i> Explore Flow on Website
                         </a>
                         <a href="https://github.com/waqas84251/DonationProject" className="portfolio-btn btn-source" target="_blank" rel="noopener noreferrer">
+                          <i className="fab fa-github"></i> View Source Code
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Scientific Calculator Project */}
+                  <div className="portfolio-card-modern reveal reveal-up stagger-1">
+                    <div className="portfolio-card-header">
+                      <img src={casioCalculatorsImg} alt="Scientific Calculator" />
+                    </div>
+                    <div className="portfolio-card-body">
+                      <h3>Scientific Calculator in React</h3>
+                      <span className="portfolio-card-type">Casio, Citizen & Zakat Calculator</span>
+                      <div className="portfolio-card-tags">
+                        <span>Fully React Based</span>
+                      </div>
+                      <div className="portfolio-card-actions">
+                        <a href="https://waqas84251.github.io/calculator/" className="portfolio-btn btn-explore" target="_blank" rel="noopener noreferrer">
+                          <i className="fas fa-globe"></i> Explore Flow on Website
+                        </a>
+                        <a href="https://github.com/waqas84251/calculator" className="portfolio-btn btn-source" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-github"></i> View Source Code
                         </a>
                       </div>
