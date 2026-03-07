@@ -15,6 +15,7 @@ import ahmadImg from './assets/ahmad.png';
 import abdulBasitImg from './assets/abdul_basit.jpg';
 import posLogoImg from './assets/pos_logo.png';
 import casioCalculatorsImg from './assets/casio_calculator.png';
+import numberArrangementImg from './assets/number_arrangement_game.png';
 
 function App() {
   const [showPoster, setShowPoster] = useState(() => {
@@ -714,6 +715,29 @@ function App() {
                           <i className="fas fa-globe"></i> Explore My Website
                         </a>
                         <a href="https://github.com/waqas84251/calculator" className="portfolio-btn btn-source" target="_blank" rel="noopener noreferrer">
+                          <i className="fab fa-github"></i> View Source Code
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Number Arrangement Game Project */}
+                  <div className="portfolio-card-modern reveal reveal-up stagger-1">
+                    <div className="portfolio-card-header">
+                      <img src={numberArrangementImg} alt="Number Arrangement Game" />
+                    </div>
+                    <div className="portfolio-card-body">
+                      <h3>Number Arrangement Game</h3>
+                      <span className="portfolio-card-type">Number arrangement game made for fun</span>
+                      <div className="portfolio-card-tags">
+                        <span>HTML</span>
+                        <span>CSS</span>
+                        <span>JavaScript</span>
+                      </div>
+                      <div className="portfolio-card-actions">
+                        <a href="https://waqas84251.github.io/numbersArrangementGame/" className="portfolio-btn btn-explore" target="_blank" rel="noopener noreferrer">
+                          <i className="fas fa-globe"></i> Explore My Website
+                        </a>
+                        <a href="https://github.com/waqas84251/numbersArrangementGame" className="portfolio-btn btn-source" target="_blank" rel="noopener noreferrer">
                           <i className="fab fa-github"></i> View Source Code
                         </a>
                       </div>
