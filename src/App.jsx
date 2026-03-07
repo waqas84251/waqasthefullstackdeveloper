@@ -690,10 +690,10 @@ function App() {
                         <span>Node.js</span>
                       </div>
                       <div className="portfolio-card-actions">
-                        <a href="https://waqas84251.github.io/DonationRecordSystem/" className="portfolio-btn btn-explore" target="_blank" rel="noopener noreferrer">
+                        <a href="https://waqas84251.github.io/DonationRecordSystem/" className="portfolio-btn btn-explore">
                           <i className="fas fa-globe"></i> Explore Flow on Website
                         </a>
-                        <a href="https://github.com/waqas84251/DonationProject" className="portfolio-btn btn-source" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/waqas84251/DonationProject" className="portfolio-btn btn-source">
                           <i className="fab fa-github"></i> View Source Code
                         </a>
                       </div>
@@ -711,10 +711,10 @@ function App() {
                         <span>Fully React Based</span>
                       </div>
                       <div className="portfolio-card-actions">
-                        <a href="https://waqas84251.github.io/calculator/" className="portfolio-btn btn-explore" target="_blank" rel="noopener noreferrer">
+                        <a href="https://waqas84251.github.io/calculator/" className="portfolio-btn btn-explore">
                           <i className="fas fa-globe"></i> Explore My Website
                         </a>
-                        <a href="https://github.com/waqas84251/calculator" className="portfolio-btn btn-source" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/waqas84251/calculator" className="portfolio-btn btn-source">
                           <i className="fab fa-github"></i> View Source Code
                         </a>
                       </div>
@@ -734,10 +734,10 @@ function App() {
                         <span>JavaScript</span>
                       </div>
                       <div className="portfolio-card-actions">
-                        <a href="https://waqas84251.github.io/numbersArrangementGame/" className="portfolio-btn btn-explore" target="_blank" rel="noopener noreferrer">
+                        <a href="https://waqas84251.github.io/numbersArrangementGame/" className="portfolio-btn btn-explore">
                           <i className="fas fa-globe"></i> Explore My Website
                         </a>
-                        <a href="https://github.com/waqas84251/numbersArrangementGame" className="portfolio-btn btn-source" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/waqas84251/numbersArrangementGame" className="portfolio-btn btn-source">
                           <i className="fab fa-github"></i> View Source Code
                         </a>
                       </div>
