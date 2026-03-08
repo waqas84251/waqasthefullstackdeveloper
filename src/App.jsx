@@ -761,7 +761,7 @@ function App() {
                         <span>C</span>
                       </div>
                       <div className="portfolio-card-actions">
-                        <a href="/rubbix_cube.apk" className="portfolio-btn btn-explore" download="rubbix_cube.apk">
+                        <a href="/RubixCube.apk" className="portfolio-btn btn-explore" download="RubixCube.apk">
                           <i className="fas fa-download"></i> Download Rubbix Cube App
                         </a>
                         <a href="https://github.com/waqas84251/rubbixcubeapp" target="_blank" rel="noopener noreferrer" className="portfolio-btn btn-source">
