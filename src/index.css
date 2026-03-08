@@ -2260,9 +2260,9 @@ p {
   }
 
   .portfolio-card-modern {
-    width: 170px;
-    /* Compact size for mobile */
-    max-width: 46%;
+    width: 240px;
+    /* Larger size for mobile */
+    max-width: 80%;
     margin: 0;
   }
 

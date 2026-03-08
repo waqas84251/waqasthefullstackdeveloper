@@ -16,6 +16,7 @@ import abdulBasitImg from './assets/abdul_basit.jpg';
 import posLogoImg from './assets/pos_logo.png';
 import casioCalculatorsImg from './assets/casio_calculator.png';
 import numberArrangementImg from './assets/number_arrangement_game.png';
+import rubiksCubeImg from './assets/rubiks_cube_app.png';
 
 function App() {
   const [showPoster, setShowPoster] = useState(() => {
@@ -743,92 +744,29 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  {/* Project 1 */}
+                  {/* Rubbix Cube App Project */}
                   <div className="portfolio-card-modern reveal reveal-up stagger-1">
                     <div className="portfolio-card-header">
-                      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop" alt="E-commerce" />
+                      <img src={rubiksCubeImg} alt="Rubbix Cube App" />
                     </div>
                     <div className="portfolio-card-body">
-                      <h3>E-commerce Store</h3>
-                      <span className="portfolio-card-type">Full Stack App</span>
+                      <h3>Rubbix Cube App</h3>
+                      <span className="portfolio-card-type">Rubbix cube app for android devices and get fun</span>
                       <div className="portfolio-card-tags">
-                        <span>React</span>
-                        <span>Node.js</span>
+                        <span>Dart</span>
+                        <span>C++</span>
+                        <span>CMake</span>
+                        <span>Swift</span>
+                        <span>HTML</span>
+                        <span>C</span>
                       </div>
-                    </div>
-                  </div>
-
-                  {/* Project 2 */}
-                  <div className="portfolio-card-modern">
-                    <div className="portfolio-card-header">
-                      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop" alt="Analytics" />
-                    </div>
-                    <div className="portfolio-card-body">
-                      <h3>Analytics Pro</h3>
-                      <span className="portfolio-card-type">Dashboard</span>
-                      <div className="portfolio-card-tags">
-                        <span>D3.js</span>
-                        <span>Firebase</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Project 3 */}
-                  <div className="portfolio-card-modern">
-                    <div className="portfolio-card-header">
-                      <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop" alt="Social App" />
-                    </div>
-                    <div className="portfolio-card-body">
-                      <h3>Connect Social</h3>
-                      <span className="portfolio-card-type">Mobile App</span>
-                      <div className="portfolio-card-tags">
-                        <span>Socket.io</span>
-                        <span>PostgreSQL</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Project 4 */}
-                  <div className="portfolio-card-modern">
-                    <div className="portfolio-card-header">
-                      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop" alt="Task Manager" />
-                    </div>
-                    <div className="portfolio-card-body">
-                      <h3>Task Flow</h3>
-                      <span className="portfolio-card-type">Productivity</span>
-                      <div className="portfolio-card-tags">
-                        <span>Redux</span>
-                        <span>Express</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Project 5 */}
-                  <div className="portfolio-card-modern">
-                    <div className="portfolio-card-header">
-                      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop" alt="Portfolio" />
-                    </div>
-                    <div className="portfolio-card-body">
-                      <h3>Dev Portfolio</h3>
-                      <span className="portfolio-card-type">Personal Site</span>
-                      <div className="portfolio-card-tags">
-                        <span>Framer</span>
-                        <span>CSS3</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Project 6 */}
-                  <div className="portfolio-card-modern">
-                    <div className="portfolio-card-header">
-                      <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop" alt="Fitness App" />
-                    </div>
-                    <div className="portfolio-card-body">
-                      <h3>FitTrack Pro</h3>
-                      <span className="portfolio-card-type">Health Tech</span>
-                      <div className="portfolio-card-tags">
-                        <span>React Native</span>
-                        <span>MySQL</span>
+                      <div className="portfolio-card-actions">
+                        <a href="/rubbix_cube.apk" className="portfolio-btn btn-explore" download="rubbix_cube.apk">
+                          <i className="fas fa-download"></i> Download Rubbix Cube App
+                        </a>
+                        <a href="https://github.com/waqas84251/rubbixcubeapp" target="_blank" rel="noopener noreferrer" className="portfolio-btn btn-source">
+                          <i className="fab fa-github"></i> View Source Code
+                        </a>
                       </div>
                     </div>
                   </div>
