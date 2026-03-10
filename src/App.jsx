@@ -746,14 +746,14 @@ function App() {
                       </div>
                     </div>
                   </div>
-                  {/* Rubbix Cube App Project */}
+                  {/* Rubik's Cube App Project */}
                   <div className="portfolio-card-modern reveal reveal-up stagger-1">
                     <div className="portfolio-card-header">
-                      <img src={rubiksCubeImg} alt="Rubbix Cube App" />
+                      <img src={rubiksCubeImg} alt="Rubik's Cube App" />
                     </div>
                     <div className="portfolio-card-body">
-                      <h3>Rubbix Cube App</h3>
-                      <span className="portfolio-card-type">Rubbix cube app for android devices and get fun</span>
+                      <h3>Rubik's Cube App</h3>
+                      <span className="portfolio-card-type">Rubik's cube app for android devices and get fun</span>
                       <div className="portfolio-card-tags">
                         <span>Dart</span>
                         <span>C++</span>
@@ -764,7 +764,7 @@ function App() {
                       </div>
                       <div className="portfolio-card-actions">
                         <a href="/RubixCube.apk" className="portfolio-btn btn-explore" download="RubixCube.apk">
-                          <i className="fas fa-download"></i> Download Rubbix Cube App
+                          <i className="fas fa-download"></i> Download Rubik's Cube App
                         </a>
                         <a href="https://github.com/waqas84251/rubbixcubeapp" target="_blank" rel="noopener noreferrer" className="portfolio-btn btn-source">
                           <i className="fab fa-github"></i> View Source Code
