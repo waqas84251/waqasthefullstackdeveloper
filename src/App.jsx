@@ -17,6 +17,8 @@ import posLogoImg from './assets/pos_logo.png';
 import casioCalculatorsImg from './assets/casio_calculator.png';
 import numberArrangementImg from './assets/number_arrangement_game.png';
 import rubiksCubeImg from './assets/rubiks_cube_app.png';
+import alQuranImg from './assets/al_quran_app.png';
+
 
 function App() {
   const [showPoster, setShowPoster] = useState(() => {
@@ -765,6 +767,32 @@ function App() {
                           <i className="fas fa-download"></i> Download Rubbix Cube App
                         </a>
                         <a href="https://github.com/waqas84251/rubbixcubeapp" target="_blank" rel="noopener noreferrer" className="portfolio-btn btn-source">
+                          <i className="fab fa-github"></i> View Source Code
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  {/* Al-Quran Kareem Project */}
+                  <div className="portfolio-card-modern reveal reveal-up stagger-1">
+                    <div className="portfolio-card-header">
+                      <img src={alQuranImg} alt="Al-Quran Kareem" />
+                    </div>
+                    <div className="portfolio-card-body">
+                      <h3>Al-Quran Kareem</h3>
+                      <span className="portfolio-card-type">Al-Quran Kareem app for android devices and get fun</span>
+                      <div className="portfolio-card-tags">
+                        <span>Dart</span>
+                        <span>C++</span>
+                        <span>CMake</span>
+                        <span>Swift</span>
+                        <span>HTML</span>
+                        <span>C</span>
+                      </div>
+                      <div className="portfolio-card-actions">
+                        <a href="/AlQuran.apk" className="portfolio-btn btn-explore" download="AlQuran.apk">
+                          <i className="fas fa-download"></i> Download Al-Quran App
+                        </a>
+                        <a href="https://github.com/waqas84251/Al-Quran-Kareem.git" target="_blank" rel="noopener noreferrer" className="portfolio-btn btn-source">
                           <i className="fab fa-github"></i> View Source Code
                         </a>
                       </div>
