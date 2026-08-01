@@ -20,6 +20,30 @@ import rubiksCubeImg from './assets/rubiks_cube_app.png';
 
 
 
+// Google AdSense Banner Component
+const AdBanner = ({ dataAdSlot }) => {
+  useEffect(() => {
+    try {
+      if (typeof window !== 'undefined') {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
+    } catch (e) {
+      console.error('AdSense Error:', e);
+    }
+  }, []);
+
+  return (
+    <div className="container" style={{ margin: '30px auto', textAlign: 'center', overflow: 'hidden' }}>
+      <ins className="adsbygoogle"
+        style={{ display: 'block' }}
+        data-ad-client="ca-pub-1311320266051198"
+        data-ad-slot={dataAdSlot}
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    </div>
+  );
+};
+
 function App() {
   const [showPoster, setShowPoster] = useState(() => {
     // Skip poster if we are refreshing or have a hash in URL (direct navigation)
@@ -597,6 +621,9 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* AdSense Unit */}
+      <AdBanner dataAdSlot="6971953633" />
 
       {/* ===================================
           PORTFOLIO SECTION
