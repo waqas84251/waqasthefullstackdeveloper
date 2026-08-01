@@ -20,8 +20,10 @@ import rubiksCubeImg from './assets/rubiks_cube_app.png';
 
 
 
-// Google AdSense Banner Component
-const AdBanner = ({ dataAdSlot }) => {
+// Google AdSense Banner Component with Auto-Refresh capability
+const AdBanner = ({ dataAdSlot, refreshInterval = 30000 }) => {
+  const [adKey, setAdKey] = useState(0);
+
   useEffect(() => {
     try {
       if (typeof window !== 'undefined') {
@@ -30,11 +32,19 @@ const AdBanner = ({ dataAdSlot }) => {
     } catch (e) {
       console.error('AdSense Error:', e);
     }
-  }, []);
+  }, [adKey]);
+
+  useEffect(() => {
+    if (!refreshInterval) return;
+    const timer = setInterval(() => {
+      setAdKey(prev => prev + 1);
+    }, refreshInterval);
+    return () => clearInterval(timer);
+  }, [refreshInterval]);
 
   return (
-    <div className="container" style={{ margin: '30px auto', textAlign: 'center', overflow: 'hidden' }}>
-      <ins className="adsbygoogle"
+    <div className="container" style={{ margin: '30px auto', textAlign: 'center', overflow: 'hidden', minHeight: '90px' }}>
+      <ins key={adKey} className="adsbygoogle"
         style={{ display: 'block' }}
         data-ad-client="ca-pub-1311320266051198"
         data-ad-slot={dataAdSlot}
@@ -346,6 +356,9 @@ function App() {
         </div>
       </section>
 
+      {/* AdSense Unit 1 */}
+      <AdBanner dataAdSlot="6971953633" refreshInterval={30000} />
+
       {/* ===================================
           ABOUT SECTION
           =================================== */}
@@ -542,6 +555,9 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* AdSense Unit 2 */}
+      <AdBanner dataAdSlot="6971953633" refreshInterval={30000} />
 
       {/* ===================================
           SERVICES SECTION
@@ -806,6 +822,10 @@ function App() {
           </div>
         </div>
       </section>
+
+      {/* AdSense Unit 3 */}
+      <AdBanner dataAdSlot="6971953633" refreshInterval={30000} />
+
       {/* ===================================
           TEAM SECTION (INTERACTIVE CAROUSEL)
           =================================== */}
@@ -946,6 +966,8 @@ function App() {
         </div>
       </section >
 
+      {/* AdSense Unit 4 */}
+      <AdBanner dataAdSlot="6971953633" refreshInterval={30000} />
 
       {/* ===================================
           CONTACT SECTION
