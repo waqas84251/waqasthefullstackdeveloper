@@ -1164,6 +1164,9 @@ function App() {
         </div>
       </section>
 
+      {/* AdSense Unit 6 */}
+      <AdBanner dataAdSlot="6971953633" refreshInterval={30000} />
+
       {/* ===================================
           FOOTER
           =================================== */}
