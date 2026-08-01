@@ -20,7 +20,7 @@ import rubiksCubeImg from './assets/rubiks_cube_app.png';
 
 
 
-// Google AdSense Banner Component with Auto-Refresh capability
+// Google AdSense Banner Component with Auto-Refresh & Fallback Placeholder
 const AdBanner = ({ dataAdSlot, refreshInterval = 30000 }) => {
   const [adKey, setAdKey] = useState(0);
 
@@ -43,9 +43,27 @@ const AdBanner = ({ dataAdSlot, refreshInterval = 30000 }) => {
   }, [refreshInterval]);
 
   return (
-    <div className="container" style={{ margin: '30px auto', textAlign: 'center', overflow: 'hidden', minHeight: '90px' }}>
+    <div className="container" style={{ margin: '30px auto', textAlign: 'center', overflow: 'hidden', minHeight: '100px', position: 'relative' }}>
+      <div style={{
+        background: 'rgba(255, 255, 255, 0.03)',
+        border: '1px dashed rgba(255, 255, 255, 0.15)',
+        borderRadius: '12px',
+        padding: '24px 15px',
+        color: '#94a3b8',
+        fontSize: '0.95rem',
+        fontWeight: '500',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '10px',
+        letterSpacing: '0.5px',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+      }}>
+        <span style={{ fontSize: '1.2rem' }}>📢</span>
+        <span>Ads will be shown here</span>
+      </div>
       <ins key={adKey} className="adsbygoogle"
-        style={{ display: 'block' }}
+        style={{ display: 'block', position: 'relative', zIndex: 2 }}
         data-ad-client="ca-pub-1311320266051198"
         data-ad-slot={dataAdSlot}
         data-ad-format="auto"
